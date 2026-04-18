@@ -1,0 +1,2584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Mend Counseling — Christian-integrated, trauma-informed therapy with Candi Crawford, MS, MA, LPC, NCC. Vicksburg, Mississippi." />
+<title>Mend Counseling · Candi Crawford, LPC</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&family=Italiana&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink: #0E0D0B;
+    --ink-soft: #1A1713;
+    --cream: #F5EEDF;
+    --cream-warm: #EFE5D1;
+    --paper: #FBF6EB;
+    --gold: #D4A13A;
+    --gold-bright: #E7B857;
+    --gold-deep: #9E7419;
+    --rust: #8A4A2C;
+    --moss: #3E4A33;
+    --rule: rgba(14,13,11,0.12);
+    --rule-gold: rgba(212,161,58,0.45);
+    --serif: 'Fraunces', 'Times New Roman', serif;
+    --display: 'Italiana', 'Fraunces', serif;
+    --sans: 'Inter', -apple-system, sans-serif;
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  html{scroll-behavior:smooth}
+
+  body{
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--paper);
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* Paper texture overlay */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(212,161,58,0.035) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(138,74,44,0.025) 0%, transparent 35%);
+    pointer-events:none;
+    z-index: 1;
+  }
+
+  /* Grain */
+  body::after{
+    content:"";
+    position:fixed; inset:0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.05  0 0 0 0 0.05  0 0 0 0 0.03  0 0 0 0.18 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    opacity: 0.35;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    z-index: 2;
+  }
+
+  main, header, footer, section, nav{position:relative; z-index: 3}
+
+  h1,h2,h3,h4{
+    font-family: var(--serif);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin: 0;
+    color: var(--ink);
+  }
+
+  .display{
+    font-family: var(--display);
+    font-weight: 400;
+    letter-spacing: 0.005em;
+  }
+
+  p{margin:0 0 1em 0}
+
+  a{color: var(--ink); text-decoration: none; transition: color .2s ease}
+  a:hover{color: var(--gold-deep)}
+
+  /* ======= NAVIGATION ======= */
+  .nav{
+    position: fixed; top:0; left:0; right:0;
+    z-index: 100;
+    padding: 18px 40px;
+    display:flex; align-items:center; justify-content:space-between;
+    background: rgba(251,246,235,0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+    transition: padding .3s ease, background .3s ease;
+  }
+  .nav.scrolled{ padding: 12px 40px; background: rgba(251,246,235,0.96); }
+
+  .brand{
+    display:flex; align-items:center; gap: 14px;
+    cursor:pointer;
+  }
+  .brand-mark{
+    width: 42px; height: 42px;
+    /* background: var(--ink); */
+    border-radius: 6px;
+    padding: 4px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .brand-mark img{ width:100%; height:100%; object-fit:contain; }
+  .brand-name{
+    font-family: var(--display);
+    font-size: 22px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .brand-name em{
+    font-style: normal;
+    color: var(--gold-deep);
+  }
+
+  .nav-links{
+    display:flex; gap: 38px; align-items:center;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .nav-links a{
+    position:relative; padding: 8px 0;
+    cursor:pointer;
+  }
+  .nav-links a.active{color: var(--gold-deep)}
+  .nav-links a::after{
+    content:"";
+    position:absolute; left:0; bottom:2px;
+    width:0; height: 1px;
+    background: var(--gold);
+    transition: width .3s ease;
+  }
+  .nav-links a:hover::after, .nav-links a.active::after{ width:100%; }
+
+  .nav-cta{
+    background: var(--ink);
+    color: var(--cream);
+    padding: 12px 22px;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-radius: 2px;
+    cursor:pointer;
+    transition: all .25s ease;
+    border: 1px solid var(--ink);
+    position: relative;
+    overflow: hidden;
+  }
+  .nav-cta::before{
+    content:"";
+    position:absolute; inset:0;
+    background: var(--gold);
+    transform: translateY(100%);
+    transition: transform .3s ease;
+    z-index: 0;
+  }
+  .nav-cta span{position:relative; z-index:1}
+  .nav-cta:hover{color: var(--ink)}
+  .nav-cta:hover::before{transform: translateY(0)}
+
+  .nav-mobile-toggle{display:none}
+
+  /* ======= PAGE SYSTEM ======= */
+  .page{display:none; min-height: 100vh; padding-top: 86px;}
+  .page.active{display:block}
+
+  /* ======= HERO / HOME ======= */
+  .hero{
+    position: relative;
+    min-height: calc(100vh - 86px);
+    padding: 80px 40px 120px;
+    display:grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items:center;
+    overflow: hidden;
+  }
+
+  .hero-inner{position:relative; z-index: 3}
+
+  .eyebrow{
+    display:inline-flex; align-items:center; gap: 12px;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    font-weight: 500;
+    margin-bottom: 32px;
+  }
+  .eyebrow::before{
+    content:""; width: 32px; height: 1px; background: var(--gold);
+  }
+
+  .hero h1{
+    font-family: var(--display);
+    font-size: clamp(56px, 8vw, 128px);
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+    margin-bottom: 32px;
+  }
+  .hero h1 .italic{
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--gold-deep);
+    position: relative;
+    display: inline-block;
+  }
+  .hero h1 .italic::after{
+    content: "";
+    position: absolute;
+    left: -4%; right: -4%;
+    bottom: 10%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold) 20%, var(--gold-bright) 50%, var(--gold) 80%, transparent);
+    opacity: 0.8;
+    transform: rotate(-1deg);
+  }
+
+  .hero-lede{
+    font-family: var(--serif);
+    font-size: clamp(18px, 1.3vw, 22px);
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 560px;
+    margin-bottom: 44px;
+    font-weight: 300;
+  }
+
+  .hero-cta-row{
+    display:flex; gap: 16px; flex-wrap: wrap; align-items: center;
+  }
+
+  .btn-primary{
+    background: var(--ink);
+    color: var(--cream);
+    padding: 18px 32px;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-radius: 2px;
+    cursor:pointer;
+    border: 1px solid var(--ink);
+    transition: all .3s ease;
+    display:inline-flex; align-items:center; gap: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::before{
+    content:"";
+    position:absolute; inset:0;
+    background: var(--gold);
+    transform: translateX(-100%);
+    transition: transform .35s ease;
+  }
+  .btn-primary > *{position:relative; z-index: 1}
+  .btn-primary:hover{color: var(--ink)}
+  .btn-primary:hover::before{transform: translateX(0)}
+  .btn-primary .arrow{
+    transition: transform .3s ease;
+    display:inline-block;
+  }
+  .btn-primary:hover .arrow{transform: translateX(4px)}
+
+  .btn-ghost{
+    background: transparent;
+    color: var(--ink);
+    padding: 17px 28px;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border: 1px solid var(--ink);
+    border-radius: 2px;
+    cursor:pointer;
+    transition: all .25s ease;
+    display:inline-flex; align-items:center; gap: 14px;
+  }
+  .btn-ghost:hover{
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  /* Kintsugi portrait frame */
+  .hero-visual{
+    position:relative;
+    width: 100%;
+    max-width: 520px;
+    aspect-ratio: 4/5;
+    justify-self: end;
+  }
+  .portrait-frame{
+    position: absolute;
+    inset: 0;
+    background: var(--ink);
+    overflow: hidden;
+    z-index: 2;
+  }
+  .portrait-frame img{
+    width:100%; height:100%; object-fit:cover;
+    filter: contrast(1.04) saturate(0.94);
+  }
+
+  /* Gold kintsugi seams drawn as SVG over the portrait */
+  .hero-seams{
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    mix-blend-mode: normal;
+  }
+  .hero-seams path{
+    filter: drop-shadow(0 0 6px rgba(231,184,87,0.55));
+  }
+
+  /* Gold frame offset behind portrait */
+  .portrait-frame-offset{
+    position: absolute;
+    top: 24px; left: 24px;
+    right: -24px; bottom: -24px;
+    border: 1px solid var(--gold);
+    z-index: 1;
+  }
+  .portrait-frame-offset::before{
+    content:"";
+    position:absolute;
+    top: 10px; left: 10px;
+    right: 10px; bottom: 10px;
+    border: 1px solid rgba(212,161,58,0.3);
+  }
+
+  /* hexagon decorative cluster echoing logo */
+  .hex-cluster{
+    position: absolute;
+    bottom: -32px; left: -40px;
+    width: 140px;
+    opacity: 0.85;
+    z-index: 4;
+  }
+
+  /* Stats strip */
+  .stats-strip{
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 40px;
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+  .stat{
+    text-align:center;
+    position:relative;
+  }
+  .stat:not(:last-child)::after{
+    content:""; position:absolute; right: -16px; top:10%; bottom:10%; width:1px;
+    background: var(--rule);
+  }
+  .stat-num{
+    font-family: var(--display);
+    font-size: 52px;
+    line-height: 1;
+    color: var(--gold-deep);
+    margin-bottom: 10px;
+  }
+  .stat-label{
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+
+  /* ======= PHILOSOPHY / Kintsugi ======= */
+  .kintsugi{
+    padding: 140px 40px;
+    background: var(--ink);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+  .kintsugi::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='600'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.15'/></svg>");
+    opacity: 0.4;
+  }
+  .kintsugi-inner{
+    max-width: 1200px; margin: 0 auto;
+    display:grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px; align-items:center;
+    position: relative; z-index: 2;
+  }
+  .kintsugi h2{
+    color: var(--cream);
+    font-family: var(--display);
+    font-size: clamp(40px, 5vw, 72px);
+    margin-bottom: 32px;
+  }
+  .kintsugi h2 em{
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--gold-bright);
+  }
+  .kintsugi p{
+    font-family: var(--serif);
+    font-size: 18px;
+    line-height: 1.7;
+    color: rgba(245,238,223,0.82);
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+  .kintsugi .eyebrow{color: var(--gold-bright)}
+  .kintsugi .eyebrow::before{background: var(--gold-bright)}
+
+  /* Kintsugi bowl illustration */
+  .bowl{
+    width: 100%; aspect-ratio: 1;
+    max-width: 480px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* ======= SERVICES ======= */
+  .services{
+    padding: 140px 40px;
+    background: var(--paper);
+  }
+  .services-head{
+    max-width: 900px; margin: 0 auto 80px;
+    text-align: center;
+  }
+  .section-title{
+    font-family: var(--display);
+    font-size: clamp(40px, 5vw, 72px);
+    margin-bottom: 24px;
+  }
+  .section-title em{
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--gold-deep);
+  }
+  .section-lede{
+    font-family: var(--serif);
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    font-weight: 300;
+    max-width: 640px; margin: 0 auto;
+  }
+
+  .service-grid{
+    max-width: 1200px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--rule);
+    border-left: 1px solid var(--rule);
+  }
+  .service{
+    padding: 48px 36px;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    background: var(--paper);
+    transition: background .3s ease;
+    position:relative;
+    overflow:hidden;
+  }
+  .service::before{
+    content:"";
+    position:absolute; left:0; top:0; bottom:0;
+    width: 3px;
+    background: var(--gold);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform .4s cubic-bezier(.77,0,.175,1);
+  }
+  .service:hover{background: var(--cream)}
+  .service:hover::before{transform: scaleY(1); transform-origin: top}
+  .service-num{
+    font-family: var(--display);
+    font-size: 14px;
+    letter-spacing: 0.3em;
+    color: var(--gold-deep);
+    margin-bottom: 20px;
+  }
+  .service-icon{
+    width:48px; height: 48px;
+    margin-bottom: 24px;
+    color: var(--gold-deep);
+  }
+  .service h3{
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 400;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .service p{
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ======= APPROACH (list) ======= */
+  .approach{
+    padding: 140px 40px;
+    background: var(--cream);
+    position: relative;
+  }
+  .approach-inner{
+    max-width: 1200px; margin: 0 auto;
+    display:grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 80px;
+  }
+  .approach-sticky{
+    position: sticky;
+    top: 120px;
+    align-self: start;
+  }
+  .approach-list{
+    list-style: none;
+    padding: 0; margin: 0;
+  }
+  .approach-item{
+    padding: 32px 0;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  .approach-item:first-child{border-top: 1px solid var(--rule)}
+  .approach-item .num{
+    font-family: var(--display);
+    font-size: 28px;
+    color: var(--gold-deep);
+    line-height: 1;
+  }
+  .approach-item h4{
+    font-family: var(--serif);
+    font-size: 22px;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  .approach-item p{
+    font-size: 15px;
+    color: var(--ink-soft);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* ======= TESTIMONIAL / QUOTE BAR ======= */
+  .quote-bar{
+    padding: 120px 40px;
+    background: var(--ink);
+    color: var(--cream);
+    text-align: center;
+    position: relative;
+  }
+  .quote-bar::before, .quote-bar::after{
+    content:"";
+    position:absolute; top:50%;
+    width: 40%; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.4;
+  }
+  .quote-bar::before{left:0}
+  .quote-bar::after{right:0}
+  .quote-mark{
+    font-family: var(--display);
+    font-size: 120px;
+    line-height: 0.5;
+    color: var(--gold);
+    margin-bottom: 20px;
+    opacity: 0.7;
+  }
+  .quote-text{
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(24px, 3vw, 40px);
+    line-height: 1.3;
+    max-width: 900px;
+    margin: 0 auto 32px;
+  }
+  .quote-attr{
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold-bright);
+  }
+
+  /* ======= CTA BANNER ======= */
+  .cta-banner{
+    padding: 120px 40px;
+    background: var(--paper);
+    text-align: center;
+  }
+  .cta-banner h2{
+    font-family: var(--display);
+    font-size: clamp(40px, 6vw, 88px);
+    margin-bottom: 24px;
+    line-height: 1;
+  }
+  .cta-banner h2 em{
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--gold-deep);
+  }
+  .cta-banner p{
+    font-family: var(--serif);
+    font-size: 20px;
+    color: var(--ink-soft);
+    max-width: 620px;
+    margin: 0 auto 48px;
+    font-weight: 300;
+  }
+
+  /* ======= ABOUT PAGE ======= */
+  .about-hero{
+    padding: 80px 40px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .about-portrait{
+    position: relative;
+    aspect-ratio: 4/5;
+    max-width: 520px;
+    overflow: hidden;
+    background: var(--ink);
+  }
+  .about-portrait img{
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .about-portrait::before{
+    content:"";
+    position: absolute;
+    top: 20px; left: 20px; right: -20px; bottom: -20px;
+    border: 1px solid var(--gold);
+    z-index: -1;
+  }
+  .about-credentials{
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  .about-name{
+    font-family: var(--display);
+    font-size: clamp(48px, 6vw, 96px);
+    line-height: 0.95;
+    margin-bottom: 24px;
+  }
+  .about-name em{
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--gold-deep);
+  }
+  .about-tagline{
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 22px;
+    color: var(--ink-soft);
+    line-height: 1.4;
+    margin-bottom: 32px;
+    max-width: 520px;
+  }
+  .about-meta{
+    display:flex; gap: 32px; flex-wrap: wrap;
+    padding: 20px 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 32px;
+  }
+  .about-meta div{
+    flex: 1; min-width: 140px;
+  }
+  .about-meta-label{
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .about-meta-val{
+    font-family: var(--serif);
+    font-size: 15px;
+  }
+
+  .about-body{
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 80px 40px 120px;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 80px;
+  }
+  .about-body aside{
+    position: sticky;
+    top: 120px;
+    align-self: start;
+  }
+  .about-body aside h4{
+    font-family: var(--serif);
+    font-size: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--gold);
+    color: var(--gold-deep);
+  }
+  .about-body aside ul{
+    list-style: none;
+    padding: 0; margin: 0;
+  }
+  .about-body aside li{
+    padding: 8px 0;
+    font-size: 14px;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--rule);
+  }
+  .about-body aside li::before{
+    content: "◆ ";
+    color: var(--gold);
+    font-size: 10px;
+    margin-right: 8px;
+  }
+
+  .about-content h3{
+    font-family: var(--display);
+    font-size: 36px;
+    margin: 48px 0 16px;
+  }
+  .about-content h3:first-child{margin-top: 0}
+  .about-content h3 em{
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--gold-deep);
+  }
+  .about-content p{
+    font-family: var(--serif);
+    font-size: 18px;
+    line-height: 1.75;
+    color: var(--ink);
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+  .about-content p:first-of-type::first-letter{
+    font-family: var(--display);
+    font-size: 72px;
+    float: left;
+    line-height: 0.85;
+    margin: 6px 12px 0 0;
+    color: var(--gold-deep);
+  }
+
+  .about-quote{
+    padding: 40px;
+    background: var(--cream);
+    border-left: 4px solid var(--gold);
+    margin: 40px 0;
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .about-quote cite{
+    display:block;
+    margin-top: 16px;
+    font-style: normal;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+  }
+
+  /* ======= BLOG ======= */
+  .blog-hero{
+    padding: 80px 40px 60px;
+    text-align: center;
+    border-bottom: 1px solid var(--rule);
+  }
+  .blog-hero h1{
+    font-family: var(--display);
+    font-size: clamp(56px, 8vw, 112px);
+    line-height: 0.95;
+  }
+  .blog-hero h1 em{
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--gold-deep);
+  }
+  .blog-hero p{
+    max-width: 620px; margin: 24px auto 0;
+    font-family: var(--serif);
+    font-size: 19px;
+    color: var(--ink-soft);
+    font-weight: 300;
+  }
+
+  .blog-grid{
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 80px 40px 120px;
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 60px 48px;
+  }
+  .blog-card{
+    cursor: pointer;
+    display: block;
+    position: relative;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--rule);
+    transition: transform .3s ease;
+  }
+  .blog-card:hover{transform: translateY(-4px)}
+  .blog-card-num{
+    font-family: var(--display);
+    font-size: 14px;
+    letter-spacing: 0.3em;
+    color: var(--gold-deep);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .blog-card-num::before{
+    content: "";
+    width: 24px; height: 1px;
+    background: var(--gold);
+  }
+  .blog-card-tags{
+    display:flex; gap: 8px; flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+  .blog-tag{
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding: 4px 10px;
+    border: 1px solid var(--rule);
+    font-weight: 500;
+  }
+  .blog-card h3{
+    font-family: var(--display);
+    font-size: 36px;
+    line-height: 1.05;
+    margin-bottom: 20px;
+    transition: color .25s ease;
+  }
+  .blog-card:hover h3{color: var(--gold-deep)}
+  .blog-card p{
+    font-family: var(--serif);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+  .blog-card .read{
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .blog-card .read::after{
+    content: "→";
+    transition: transform .25s ease;
+  }
+  .blog-card:hover .read::after{transform: translateX(4px)}
+
+  /* Blog post reader */
+  .blog-reader{
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 40px 120px;
+  }
+  .blog-back{
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 40px;
+    cursor: pointer;
+    display: inline-flex; align-items:center; gap: 10px;
+  }
+  .blog-back:hover{color: var(--gold-deep)}
+  .blog-reader-meta{
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .blog-reader-num{
+    font-family: var(--display);
+    font-size: 14px;
+    letter-spacing: 0.3em;
+    color: var(--gold-deep);
+    margin-bottom: 24px;
+  }
+  .blog-reader h1{
+    font-family: var(--display);
+    font-size: clamp(40px, 5vw, 68px);
+    line-height: 1.05;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .blog-reader h1 em{
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--gold-deep);
+  }
+  .blog-reader-author{
+    text-align:center;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 48px;
+  }
+  .blog-reader-author .dot{
+    color: var(--gold);
+    margin: 0 14px;
+  }
+  .blog-reader-content h2{
+    font-family: var(--display);
+    font-size: 32px;
+    margin: 48px 0 20px;
+    line-height: 1.1;
+  }
+  .blog-reader-content h2 em{
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--gold-deep);
+  }
+  .blog-reader-content p{
+    font-family: var(--serif);
+    font-size: 19px;
+    line-height: 1.75;
+    color: var(--ink);
+    font-weight: 300;
+    margin-bottom: 24px;
+  }
+  .blog-reader-content p:first-child::first-letter{
+    font-family: var(--display);
+    font-size: 86px;
+    float: left;
+    line-height: 0.85;
+    margin: 8px 14px 0 0;
+    color: var(--gold-deep);
+  }
+  .blog-reader-content ul{
+    font-family: var(--serif);
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--ink);
+    font-weight: 300;
+    padding-left: 0;
+    list-style: none;
+  }
+  .blog-reader-content li{
+    padding-left: 32px;
+    position: relative;
+    margin-bottom: 10px;
+  }
+  .blog-reader-content li::before{
+    content: "◆";
+    position: absolute; left: 0; top: 2px;
+    color: var(--gold);
+    font-size: 12px;
+  }
+  .blog-reader-content blockquote{
+    margin: 40px 0;
+    padding: 32px 40px;
+    background: var(--cream);
+    border-left: 4px solid var(--gold);
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.5;
+    font-weight: 300;
+    font-family: var(--serif);
+  }
+  .blog-reader-content strong{
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .blog-post-end{
+    text-align: center;
+    margin: 60px 0 40px;
+    color: var(--gold);
+    font-size: 20px;
+    letter-spacing: 1em;
+  }
+
+  /* ======= CONTACT & SCHEDULING ======= */
+  .contact{
+    padding: 80px 40px 120px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .contact-grid{
+    display:grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    margin-top: 60px;
+  }
+  .contact-left h1{
+    font-family: var(--display);
+    font-size: clamp(48px, 6vw, 88px);
+    line-height: 0.95;
+    margin-bottom: 32px;
+  }
+  .contact-left h1 em{
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--gold-deep);
+  }
+  .contact-lede{
+    font-family: var(--serif);
+    font-size: 20px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    font-weight: 300;
+    margin-bottom: 48px;
+  }
+  .contact-details{
+    border-top: 1px solid var(--rule);
+  }
+  .contact-row{
+    padding: 24px 0;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+  .contact-label{
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    padding-top: 4px;
+  }
+  .contact-value{
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--ink);
+  }
+  .contact-value a{border-bottom: 1px solid transparent; transition: border .2s}
+  .contact-value a:hover{border-bottom-color: var(--gold)}
+
+  /* FORM */
+  .form-card{
+    background: var(--cream);
+    padding: 56px 48px;
+    position: relative;
+  }
+  .form-card::before{
+    content:"";
+    position:absolute;
+    top:-1px; left: -1px; right: -1px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold-deep), var(--gold-bright), var(--gold-deep));
+  }
+  .form-card h3{
+    font-family: var(--display);
+    font-size: 32px;
+    margin-bottom: 8px;
+  }
+  .form-card .form-sub{
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-bottom: 32px;
+  }
+  .form-row{
+    margin-bottom: 24px;
+  }
+  .form-row.row2{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .form-row label{
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .form-row input,
+  .form-row select,
+  .form-row textarea{
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid var(--ink);
+    background: transparent;
+    padding: 10px 0;
+    font-family: var(--serif);
+    font-size: 16px;
+    color: var(--ink);
+    outline: none;
+    transition: border-color .2s;
+    border-radius: 0;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .form-row textarea{
+    min-height: 120px;
+    resize: vertical;
+  }
+  .form-row select{
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'><path d='M1 3l4 4 4-4' stroke='%230E0D0B' fill='none' stroke-width='1.5'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 4px center;
+    padding-right: 24px;
+  }
+  .form-row input:focus,
+  .form-row select:focus,
+  .form-row textarea:focus{
+    border-color: var(--gold-deep);
+  }
+  .form-row input::placeholder,
+  .form-row textarea::placeholder{ color: rgba(14,13,11,0.35); font-style: italic }
+
+  .form-check{
+    display: flex; gap: 12px; align-items: flex-start;
+    font-family: var(--serif);
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    margin-bottom: 24px;
+    cursor: pointer;
+  }
+  .form-check input{
+    margin-top: 3px;
+    accent-color: var(--gold-deep);
+    flex-shrink: 0;
+  }
+  .form-submit{
+    width: 100%;
+    background: var(--ink);
+    color: var(--cream);
+    padding: 18px;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: background .25s;
+    margin-top: 12px;
+  }
+  .form-submit:hover{background: var(--gold-deep)}
+  .form-success{
+    display:none;
+    text-align: center;
+    padding: 60px 20px;
+  }
+  .form-success.show{display:block}
+  .form-success h3{
+    font-family: var(--display);
+    font-size: 36px;
+    color: var(--gold-deep);
+    margin-bottom: 16px;
+  }
+  .form-success p{
+    font-family: var(--serif);
+    font-size: 17px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  /* ======= FOOTER ======= */
+  .footer{
+    background: var(--ink);
+    color: var(--cream);
+    padding: 80px 40px 32px;
+    position: relative;
+  }
+  .footer::before{
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold) 20%, var(--gold-bright) 50%, var(--gold) 80%, transparent);
+  }
+  .footer-inner{
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 60px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid rgba(245,238,223,0.1);
+  }
+  .footer-brand{
+    max-width: 340px;
+  }
+  .footer-brand .brand-name{color: var(--cream)}
+  .footer-brand .brand-name em{color: var(--gold-bright)}
+  .footer-brand p{
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(245,238,223,0.7);
+    margin-top: 20px;
+  }
+  .footer-col h5{
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold-bright);
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  .footer-col ul{
+    list-style: none;
+    padding: 0; margin: 0;
+  }
+  .footer-col li{
+    padding: 6px 0;
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 300;
+  }
+  .footer-col a{
+    color: rgba(245,238,223,0.75);
+    cursor: pointer;
+  }
+  .footer-col a:hover{color: var(--gold-bright)}
+
+  .footer-bottom{
+    max-width: 1400px;
+    margin: 32px auto 0;
+    padding-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: rgba(245,238,223,0.5);
+    letter-spacing: 0.1em;
+  }
+
+  .kintsugi-divider{
+    display: flex; justify-content: center; margin: 20px 0 32px;
+  }
+  .kintsugi-divider svg{width: 100px; height: auto}
+
+  /* ======= RESPONSIVE ======= */
+  @media (max-width: 1024px){
+    .hero{grid-template-columns: 1fr; gap: 60px; padding: 60px 32px 100px}
+    .hero-visual{margin: 0 auto}
+    .kintsugi-inner{grid-template-columns: 1fr; gap: 60px}
+    .service-grid{grid-template-columns: repeat(2, 1fr)}
+    .approach-inner{grid-template-columns: 1fr; gap: 40px}
+    .approach-sticky{position: static}
+    .about-hero{grid-template-columns: 1fr; gap: 40px}
+    .about-body{grid-template-columns: 1fr; gap: 40px}
+    .about-body aside{position: static}
+    .contact-grid{grid-template-columns: 1fr; gap: 48px}
+    .footer-inner{grid-template-columns: 1fr 1fr; gap: 40px}
+    .blog-grid{grid-template-columns: 1fr; gap: 40px}
+    .stats-strip{grid-template-columns: repeat(2, 1fr); gap: 32px}
+    .stat:nth-child(2)::after{display:none}
+  }
+
+  @media (max-width: 720px){
+    .nav{padding: 14px 20px; flex-wrap: wrap}
+    .nav.scrolled{padding: 10px 20px}
+    .brand-name{font-size: 18px}
+    .brand-mark{width: 36px; height: 36px}
+    .nav-links{display: none; width: 100%; order: 3; padding-top: 16px; flex-direction: column; gap: 16px; align-items: flex-start; border-top: 1px solid var(--rule); margin-top: 14px}
+    .nav-links.open{display:flex}
+    .nav-cta{padding: 10px 16px; font-size: 11px}
+    .nav-mobile-toggle{
+      display:flex; flex-direction: column; gap: 5px;
+      background: transparent; border: none;
+      padding: 8px; cursor: pointer;
+      margin-left: 8px;
+    }
+    .nav-mobile-toggle span{
+      width: 22px; height: 1.5px; background: var(--ink);
+      transition: all .25s;
+    }
+    .nav-mobile-toggle.open span:nth-child(1){transform: translateY(6.5px) rotate(45deg)}
+    .nav-mobile-toggle.open span:nth-child(2){opacity: 0}
+    .nav-mobile-toggle.open span:nth-child(3){transform: translateY(-6.5px) rotate(-45deg)}
+    .hero{padding: 40px 20px 80px}
+    .stats-strip{grid-template-columns: 1fr; padding: 24px 20px}
+    .stat:not(:last-child)::after{display: none}
+    .stat{padding: 16px 0; border-bottom: 1px solid var(--rule)}
+    .stat:last-child{border: none}
+    .kintsugi, .services, .approach, .quote-bar, .cta-banner{padding: 80px 20px}
+    .service-grid{grid-template-columns: 1fr}
+    .service{padding: 36px 24px}
+    .footer-inner{grid-template-columns: 1fr; gap: 32px}
+    .footer-bottom{flex-direction: column; gap: 16px; text-align: center}
+    .form-card{padding: 36px 24px}
+    .form-row.row2{grid-template-columns: 1fr}
+    .contact-row{grid-template-columns: 1fr; gap: 4px}
+    .blog-grid{padding: 60px 20px 80px}
+    .blog-reader{padding: 20px 20px 80px}
+    .about-hero{padding: 40px 20px}
+    .about-body{padding: 60px 20px 100px}
+    .about-content p:first-of-type::first-letter{font-size: 56px}
+  }
+
+  /* Page transitions */
+  @keyframes fadeUp {
+    from{opacity:0; transform: translateY(24px)}
+    to{opacity:1; transform: translateY(0)}
+  }
+  .page.active > *{animation: fadeUp .6s ease-out both}
+  .page.active > *:nth-child(2){animation-delay: .05s}
+  .page.active > *:nth-child(3){animation-delay: .1s}
+  .page.active > *:nth-child(4){animation-delay: .15s}
+
+  /* subtle float for decorative hex */
+  @keyframes float {
+    0%, 100%{transform: translateY(0) rotate(0deg)}
+    50%{transform: translateY(-8px) rotate(2deg)}
+  }
+  .hex-cluster{animation: float 8s ease-in-out infinite}
+
+  /* gold seam shimmer */
+  @keyframes shimmer {
+    0%, 100%{opacity: 0.88}
+    50%{opacity: 1}
+  }
+  .hero-seams{animation: shimmer 4s ease-in-out infinite}
+
+</style>
+</head>
+<body>
+
+<!-- =========================== NAV =========================== -->
+<nav class="nav" id="nav">
+  <div class="brand" onclick="showPage('home')">
+    <div class="brand-mark"><img src="assets/logo.png" alt="Mend Counseling"></div>
+    <span class="brand-name">Mend Counseling</span>
+  </div>
+  <div class="nav-links" id="navLinks">
+    <a onclick="showPage('home')" data-page="home" class="active">Home</a>
+    <a onclick="showPage('about')" data-page="about">About</a>
+    <a onclick="showPage('services')" data-page="services">Services</a>
+    <a onclick="showPage('blog')" data-page="blog">Journal</a>
+    <a onclick="showPage('forms')" data-page="forms">Intake</a>
+    <a onclick="showPage('contact')" data-page="contact">Contact</a>
+  </div>
+  <button class="nav-cta" onclick="showPage('contact')"><span>Schedule Session</span></button>
+  <button class="nav-mobile-toggle" id="navToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- =========================== HOME =========================== -->
+<main id="home" class="page active">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <!-- <div class="eyebrow">Christian · Trauma-Informed Counseling</div> -->
+      <h1>Broken things<br>become<br><span class="italic">whole again.</span></h1>
+      <p class="hero-lede">
+        A counseling practice rooted in the belief that brokeness is not the end of the story,
+        but the opportunity for a more beautiful and redemptive one. Candi Crawford walks alongside individuals, couples, and families in
+        Vicksburg, Mississippi on the courageous work of healing.
+      </p>
+      <div class="hero-cta-row">
+        <button class="btn-primary" onclick="showPage('contact')"><span>Schedule a Session</span> <span class="arrow">→</span></button>
+        <button class="btn-ghost" onclick="showPage('about')">Meet Candi</button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="portrait-frame-offset"></div>
+      <div class="portrait-frame">
+        <img src="assets/portrait.webp" alt="Candi Crawford, counselor at Mend Counseling">
+      </div>
+      <svg class="hero-seams" viewBox="0 0 400 500" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="seam-grad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#9E7419"/>
+            <stop offset="40%" stop-color="#E7B857"/>
+            <stop offset="70%" stop-color="#D4A13A"/>
+            <stop offset="100%" stop-color="#9E7419"/>
+          </linearGradient>
+        </defs>
+        <!-- Upper-right corner seam with branches -->
+        <path d="M 260 0 L 275 30 L 290 20 L 315 55 L 340 45 L 360 75 L 400 80"
+              stroke="url(#seam-grad)" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M 315 55 L 325 90 L 310 120"
+              stroke="url(#seam-grad)" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.85"/>
+        <!-- Right edge running down -->
+        <path d="M 400 220 L 380 245 L 395 275 L 375 310 L 400 340"
+              stroke="url(#seam-grad)" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.9"/>
+        <!-- Lower-left corner fracture -->
+        <path d="M 0 420 L 35 410 L 55 435 L 90 425 L 120 450 L 145 440 L 180 470 L 210 500"
+              stroke="url(#seam-grad)" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M 90 425 L 100 395 L 130 380"
+              stroke="url(#seam-grad)" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.8"/>
+        <!-- Left edge small crack -->
+        <path d="M 0 180 L 25 195 L 15 220"
+              stroke="url(#seam-grad)" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.8"/>
+        <!-- Tiny gold dots at intersections -->
+        <circle cx="315" cy="55" r="3" fill="#E7B857"/>
+        <circle cx="90" cy="425" r="3" fill="#E7B857"/>
+        <circle cx="25" cy="195" r="2" fill="#E7B857"/>
+        <circle cx="375" cy="310" r="2" fill="#E7B857"/>
+      </svg>
+      <svg class="hex-cluster" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <g fill="#D4A13A" opacity="0.9">
+          <polygon points="30,20 50,10 70,20 70,40 50,50 30,40"/>
+          <polygon points="80,20 100,10 120,20 120,40 100,50 80,40"/>
+          <polygon points="55,55 75,45 95,55 95,75 75,85 55,75"/>
+          <polygon points="105,55 125,45 145,55 145,75 125,85 105,75"/>
+          <polygon points="30,90 50,80 70,90 70,110 50,120 30,110" opacity="0.6"/>
+          <polygon points="80,90 100,80 120,90 120,110 100,120 80,110" opacity="0.4"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Stats strip -->
+  <section class="stats-strip">
+    <div class="stat">
+      <div class="stat-num">15+</div>
+      <div class="stat-label">Years of Counseling</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">2</div>
+      <div class="stat-label">Master's Degrees</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">NCC</div>
+      <div class="stat-label">Nationally Certified</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">LPC</div>
+      <div class="stat-label">Licensed Professional Counselor</div>
+    </div>
+  </section>
+
+  <!-- Kintsugi philosophy -->
+  <section class="kintsugi">
+    <div class="kintsugi-inner">
+      <div>
+        <svg class="bowl" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gold-grad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#9E7419"/>
+              <stop offset="50%" stop-color="#E7B857"/>
+              <stop offset="100%" stop-color="#9E7419"/>
+            </linearGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="2"/>
+              <feMerge>
+                <feMergeNode/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          <!-- Bowl body -->
+          <path d="M 80 160 Q 80 320 200 330 Q 320 320 320 160 Z"
+                fill="#2A2520" stroke="#1A1713" stroke-width="2"/>
+          <!-- Rim -->
+          <ellipse cx="200" cy="160" rx="120" ry="18" fill="#3A3530" stroke="#1A1713" stroke-width="2"/>
+          <ellipse cx="200" cy="158" rx="112" ry="13" fill="#1A1713"/>
+          <!-- Gold seams (kintsugi cracks) -->
+          <g stroke="url(#gold-grad)" stroke-width="3" fill="none" stroke-linecap="round" filter="url(#glow)">
+            <path d="M 200 160 L 190 200 L 205 230 L 195 270 L 210 310" />
+            <path d="M 195 270 L 170 280 L 155 260" />
+            <path d="M 205 230 L 230 240 L 245 220" />
+            <path d="M 120 180 L 140 210 L 135 245 L 160 275 L 175 305" />
+            <path d="M 140 210 L 170 215" />
+            <path d="M 280 180 L 265 210 L 275 245 L 255 275 L 240 310" />
+            <path d="M 275 245 L 245 250" />
+          </g>
+          <!-- Gold dots at seam intersections -->
+          <g fill="#E7B857">
+            <circle cx="200" cy="160" r="3"/>
+            <circle cx="120" cy="180" r="2.5"/>
+            <circle cx="280" cy="180" r="2.5"/>
+            <circle cx="195" cy="270" r="2.5"/>
+            <circle cx="170" cy="215" r="2"/>
+          </g>
+        </svg>
+      </div>
+      <div>
+        <div class="eyebrow">The Kintsugi Way</div>
+        <h2>To mend is to<br><em>honor the break.</em></h2>
+        <p>
+          Kintsugi is the Japanese tradition of repairing broken pottery with lacquer dusted in gold. The
+          fracture isn't concealed — it's illuminated. The vessel is more beautiful for having been broken.
+        </p>
+        <p>
+          That is the work we do here. Not returning you to who you were before the grief, the trauma,
+          the disappointment. But walking with you toward someone more whole, more honest, and more
+          grounded than you could have been without the break.
+        </p>
+        <p>
+          Your scars are not liabilities. With care and courage, they become the very seams that hold
+          you together.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services preview -->
+  <section class="services">
+    <div class="services-head">
+      <div class="eyebrow" style="justify-content:center; display:flex;">What I Help With</div>
+      <h2 class="section-title">Care for the <em>whole person</em></h2>
+      <p class="section-lede">
+        Every client is unique, so no single approach fits all. I integrate evidence-based therapies
+        with a person-centered, trauma-informed foundation — tailored to you.
+      </p>
+    </div>
+    <div class="service-grid">
+      <div class="service">
+        <div class="service-num">/ 01</div>
+        <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="24" cy="24" r="18"/>
+          <path d="M 15 22 Q 24 12 33 22"/>
+          <circle cx="19" cy="24" r="1.5" fill="currentColor"/>
+          <circle cx="29" cy="24" r="1.5" fill="currentColor"/>
+          <path d="M 18 32 Q 24 36 30 32"/>
+        </svg>
+        <h3>Anxiety & Perfectionism</h3>
+        <p>Unlearning the coping strategies that once protected you but now keep you stuck — moving from reaction to response.</p>
+      </div>
+      <div class="service">
+        <div class="service-num">/ 02</div>
+        <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M 24 40 L 14 30 Q 8 24 14 18 Q 20 12 24 18 Q 28 12 34 18 Q 40 24 34 30 Z"/>
+          <path d="M 18 24 L 22 28 L 30 20" />
+        </svg>
+        <h3>Trauma & EMDR</h3>
+        <p>Eye Movement Desensitization and Reprocessing — a research-backed approach that helps the brain heal from memories that keep you tethered.</p>
+      </div>
+      <div class="service">
+        <div class="service-num">/ 03</div>
+        <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="17" cy="20" r="6"/>
+          <circle cx="31" cy="20" r="6"/>
+          <path d="M 7 38 Q 7 28 17 28 Q 24 28 24 34"/>
+          <path d="M 24 34 Q 24 28 31 28 Q 41 28 41 38"/>
+        </svg>
+        <h3>Premarital & Marital</h3>
+        <p>Honest communication, clarified expectations, and durable intimacy — the work that protects a partnership before and after the wedding.</p>
+      </div>
+      <div class="service">
+        <div class="service-num">/ 04</div>
+        <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M 8 30 Q 8 20 18 20 L 30 20 Q 40 20 40 30 L 40 36 L 34 36 L 30 42 L 26 36 L 18 36 Q 8 36 8 30 Z"/>
+          <line x1="16" y1="27" x2="32" y2="27"/>
+          <line x1="16" y1="31" x2="26" y2="31"/>
+        </svg>
+        <h3>Communication Breakdown</h3>
+        <p>When "I said this, you heard that" becomes a pattern — rebuilding the sender–receiver loop with humility, patience, and practice.</p>
+      </div>
+      <div class="service">
+        <div class="service-num">/ 05</div>
+        <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M 24 8 L 24 40"/>
+          <path d="M 10 14 Q 24 10 38 14"/>
+          <path d="M 10 34 Q 24 38 38 34"/>
+          <path d="M 10 14 L 10 34"/>
+          <path d="M 38 14 L 38 34"/>
+        </svg>
+        <h3>Grief & Loss</h3>
+        <p>For the seasons when the sadness doesn't follow the calendar — space to name what's real, honor what's gone, and find your footing.</p>
+      </div>
+      <div class="service">
+        <div class="service-num">/ 06</div>
+        <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M 24 42 C 12 30 8 22 14 16 C 18 12 24 14 24 20 C 24 14 30 12 34 16 C 40 22 36 30 24 42 Z"/>
+        </svg>
+        <h3>Personal & Spiritual Growth</h3>
+        <p>For those who want faith and therapy to work together — integrating belief with the practical work of becoming whole.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Approach -->
+  <section class="approach">
+    <div class="approach-inner">
+      <div class="approach-sticky">
+        <div class="eyebrow">How I Work</div>
+        <h2 class="section-title">A grounded,<br><em>integrated approach.</em></h2>
+        <p class="section-lede" style="margin-top:24px; font-size: 17px">
+          Person-centered. Trauma-informed. Always honest about the work ahead — and always
+          confident that you are worth the effort.
+        </p>
+      </div>
+      <ul class="approach-list">
+        <li class="approach-item">
+          <div class="num">01</div>
+          <div>
+            <h4>Begin with safety</h4>
+            <p>We start by building a room — a real one and an emotional one — where the most honest parts of you can exhale. No judgment. No rush.</p>
+          </div>
+        </li>
+        <li class="approach-item">
+          <div class="num">02</div>
+          <div>
+            <h4>Uncover the "why"</h4>
+            <p>I help you name the patterns, identify what's been shaping your responses, and understand how your survival brain has been working to protect you.</p>
+          </div>
+        </li>
+        <li class="approach-item">
+          <div class="num">03</div>
+          <div>
+            <h4>Integrate proven methods</h4>
+            <p>EMDR for trauma, cognitive-behavioral tools for anxiety, emotion-focused work for relationships — tailored to what you actually need, not what's trendy.</p>
+          </div>
+        </li>
+        <li class="approach-item">
+          <div class="num">04</div>
+          <div>
+            <h4>Practice new patterns</h4>
+            <p>Insight is the beginning. Change comes from rehearsing new responses until they feel like home. We do this together, at your pace.</p>
+          </div>
+        </li>
+        <li class="approach-item">
+          <div class="num">05</div>
+          <div>
+            <h4>Carry the work forward</h4>
+            <p>My goal is not to keep you in therapy forever. It's to equip you to walk into the world differently — whole in a way you didn't know you could be.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="cta-banner">
+    <h2>You don't have to<br><em>figure it out alone.</em></h2>
+    <p>
+      The bravest thing you can do is ask for help before you're in crisis. You don't have to have
+      it all figured out before you walk through the door.
+    </p>
+    <button class="btn-primary" onclick="showPage('contact')">
+      <span>Start with a Consultation</span> <span class="arrow">→</span>
+    </button>
+  </section>
+</main>
+
+<!-- =========================== ABOUT =========================== -->
+<main id="about" class="page">
+  <section class="about-hero">
+    <div class="about-portrait">
+      <img src="assets/portrait.webp" alt="Candi Crawford, MS, MA, LPC, NCC">
+    </div>
+    <div>
+      <div class="about-credentials">MS · MA · LPC · NCC</div>
+      <h1 class="about-name">Candi<br><em>Crawford</em></h1>
+      <p class="about-tagline">
+        "No one approach works for everyone. Your story deserves a therapist who listens before
+        she prescribes."
+      </p>
+      <div class="about-meta">
+        <div>
+          <div class="about-meta-label">Location</div>
+          <div class="about-meta-val">Vicksburg, MS</div>
+        </div>
+        <div>
+          <div class="about-meta-label">Experience</div>
+          <div class="about-meta-val">15+ Years</div>
+        </div>
+        <div>
+          <div class="about-meta-label">Supervising LPC</div>
+          <div class="about-meta-val">Dr. Fred Hall, LPC-S</div>
+        </div>
+      </div>
+      <button class="btn-primary" onclick="showPage('contact')">
+        <span>Work with Candi</span> <span class="arrow">→</span>
+      </button>
+    </div>
+  </section>
+
+  <section class="about-body">
+    <aside>
+      <h4>Education</h4>
+      <ul>
+	<li>PhD Candidate — Colorado Christian University</li>
+        <li>MA, Clinical Mental Health Counseling — Colorado Christian University</li>
+        <li>MS, Psychology — University of Phoenix</li>
+      </ul>
+      <h4 style="margin-top: 40px">Credentials</h4>
+      <ul>
+        <li>Licensed Professional Counselor (LPC)</li>
+        <li>Nationally Certified Counselor (NBCC)</li>
+        <li>Working toward EMDR certification</li>
+      </ul>
+      <h4 style="margin-top: 40px">Specialties</h4>
+      <ul>
+        <li>Anxiety & Depression</li>
+        <li>Trauma & Complex Trauma</li>
+        <li>Marital & Premarital</li>
+        <li>Communication</li>
+        <li>Grief & Loss</li>
+        <li>Personal Growth</li>
+      </ul>
+    </aside>
+
+    <div class="about-content">
+      <h3>On showing up <em>whole.</em></h3>
+      <p>
+        Candi is passionate about mental and emotional health and wellness. With more than fifteen
+        years of counseling experience in church and church-planting organizations, she brings both
+        lived ministry wisdom and formal clinical training into the therapy room — and she's
+        protective of both.
+      </p>
+      <p>
+        She operates from a person-centered, trauma-informed foundation. Person-centered means
+        she meets every client with empathy, genuineness, and unconditional positive regard.
+        Trauma-informed means she is attentive to the weight people carry in and the ways that
+        weight has shaped how they speak, relate, and cope. She believes no single approach works
+        for everyone, so she integrates a range of theories based on the presenting issues of each
+        client.
+      </p>
+
+      <div class="about-quote">
+        "I work with clients to help them uncover their 'why' — to discover their strengths and
+        passions, and together, evaluate how those strengths can be used to nurture a healthier
+        you."
+        <cite>— Candi Crawford</cite>
+      </div>
+
+      <h3>Rooted in <em>multicultural competence.</em></h3>
+      <p>
+        Candi is fiercely dedicated to multicultural competence. Her work with multiethnic ministry,
+        multiethnic church-planting organizations, and racial reconciliation has prepared her for
+        cross-cultural work. Her co-authored research, <em>Racial Differences in the Expression of
+        Mental Illness: Implications for Educators and Counselors,</em> reflects her commitment to
+        ensuring that people of color — especially those who may carry unique cultural concerns —
+        come to experience therapy as a necessary and healthy tool for life.
+      </p>
+
+      <h3>Faith & therapy, <em>together.</em></h3>
+      <p>
+        For clients who desire to integrate faith into the counseling process (and many do), Candi
+        believes therapy does not replace trust in the Lord — it can strengthen it. Scripture
+        consistently holds hope and responsibility together. Prayer matters. Surrender matters. And
+        so does the courageous work of growth.
+      </p>
+      <p>
+        Sometimes the most faithful thing you can do is admit you can't heal in isolation. Choosing
+        therapy isn't a lack of faith; it's an expression of wisdom, stewardship, and humility.
+      </p>
+
+      <h3>Beyond the counseling room.</h3>
+      <p>
+        Candi is an unsuccessful dieter and an avid exerciser (her words). She and her husband have
+        been married for quite some time and have two amazing sons. When she isn't engulfed in
+        "guy things" for family time, you'll find her passionately working with church planters,
+        humbly serving in her local church, and working on research and certifications. And should
+        she stumble upon free time, she loves to travel, read, "try to" paint, and sit quietly and
+        reflectively beside any body of water.
+      </p>
+    </div>
+  </section>
+
+  <section class="cta-banner">
+    <h2>Ready to <em>begin?</em></h2>
+    <p>Reach out for a free 15-minute consultation to see if we're the right fit.</p>
+    <button class="btn-primary" onclick="showPage('contact')">
+      <span>Schedule Consultation</span> <span class="arrow">→</span>
+    </button>
+  </section>
+</main>
+
+<!-- =========================== SERVICES =========================== -->
+<main id="services" class="page">
+  <section class="blog-hero">
+    <h1>What I help<br><em>clients work through.</em></h1>
+    <p>
+      Every client is unique — no single approach works for everyone. Here's how I work and what
+      I help with. If you don't see your concern listed, reach out anyway.
+    </p>
+  </section>
+
+  <section class="services" style="padding-top: 80px">
+    <div class="service-grid">
+      <div class="service">
+        <div class="service-num">/ 01</div>
+        <h3>Anxiety & Panic</h3>
+        <p>When worry becomes a full-time job — we learn to distinguish the threat signal from the
+        false alarm, and to ground your body when your mind spirals.</p>
+      </div>
+      <div class="service">
+        <div class="service-num">/ 02</div>
+        <h3>Trauma & Complex Trauma</h3>
+        <p>For single events and layered histories alike. EMDR and trauma-informed talk therapy to
+        help the brain finish processing what it couldn't in the moment.</p>
+      </div>
+      <div class="service">
+        <div class="service-num">/ 03</div>
+        <h3>Depression & Emotional Fatigue</h3>
+        <p>The kind that doesn't resolve when the calendar turns. We work toward energy, meaning,
+        and a return to the things that once mattered.</p>
+      </div>
+      <div class="service">
+        <div class="service-num">/ 04</div>
+        <h3>Marital Counseling</h3>
+        <p>For couples navigating conflict, distance, betrayal, or just a longing for something
+        better. Honest conversation in a safe, structured space.</p>
+      </div>
+      <div class="service">
+        <div class="service-num">/ 05</div>
+        <h3>Premarital Counseling</h3>
+        <p>The work that protects a marriage before it starts — expectations, communication,
+        conflict styles, family of origin, finances, faith, intimacy.</p>
+      </div>
+      <div class="service">
+        <div class="service-num">/ 07</div>
+        <h3>Grief & Loss</h3>
+        <p>Death, divorce, estrangement, miscarriage, the loss of a season or a self. Space to
+        name it, feel it, and carry it differently.</p>
+      </div>
+      <div class="service">
+        <div class="service-num">/ 09</div>
+        <h3>Spiritual Concerns</h3>
+        <p>Church hurt, guilt, shame, wrestling with God — integrated
+        thoughtfully and without agenda.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMDR callout -->
+  <section class="kintsugi">
+    <div class="kintsugi-inner">
+      <div>
+        <div class="eyebrow">Featured Modality</div>
+        <h2>EMDR:<br>Eye Movement<br><em>Desensitization & Reprocessing.</em></h2>
+        <p>
+          First introduced by Dr. Francine Shapiro in the 1980s, EMDR is an evidence-based trauma
+          therapy endorsed by the American Psychological Association and the World Health
+          Organization.
+        </p>
+        <p>
+          Unlike traditional talk therapy, EMDR uses bilateral stimulation — eye movements or
+          side-to-side sensory input — to help the brain reprocess memories that have stayed
+          "stuck." It doesn't erase what happened. It changes the way those memories live in you.
+        </p>
+        <p>
+          EMDR is considered a brief intervention. Many clients experience meaningful progress in
+          a relatively short number of sessions.
+        </p>
+      </div>
+      <div style="display:flex; justify-content:center">
+        <svg viewBox="0 0 320 320" width="320" height="320" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="eye-grad" cx="0.5" cy="0.5" r="0.5">
+              <stop offset="0%" stop-color="#E7B857"/>
+              <stop offset="60%" stop-color="#D4A13A"/>
+              <stop offset="100%" stop-color="#9E7419"/>
+            </radialGradient>
+          </defs>
+          <!-- eye shape -->
+          <path d="M 40 160 Q 160 40 280 160 Q 160 280 40 160 Z"
+                fill="none" stroke="#F5EEDF" stroke-width="2" opacity="0.5"/>
+          <path d="M 60 160 Q 160 70 260 160 Q 160 250 60 160 Z"
+                fill="#1A1713" stroke="#F5EEDF" stroke-width="1" opacity="0.8"/>
+          <circle cx="160" cy="160" r="48" fill="url(#eye-grad)"/>
+          <circle cx="160" cy="160" r="20" fill="#0E0D0B"/>
+          <circle cx="152" cy="152" r="6" fill="#F5EEDF" opacity="0.9"/>
+          <!-- bilateral motion indicator -->
+          <g stroke="#D4A13A" stroke-width="1" fill="none" opacity="0.6">
+            <path d="M 30 160 Q 30 130 60 160"/>
+            <path d="M 290 160 Q 290 130 260 160"/>
+            <path d="M 30 160 Q 30 190 60 160"/>
+            <path d="M 290 160 Q 290 190 260 160"/>
+          </g>
+          <!-- arrows indicating bilateral movement -->
+          <g fill="#D4A13A">
+            <polygon points="25,160 35,155 35,165"/>
+            <polygon points="295,160 285,155 285,165"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-banner">
+    <h2>Not sure where to <em>start?</em></h2>
+    <p>That's okay. Most people aren't. A free 15-minute consultation is the easiest way to find out if this is a fit.</p>
+    <button class="btn-primary" onclick="showPage('contact')">
+      <span>Request Consultation</span> <span class="arrow">→</span>
+    </button>
+  </section>
+</main>
+
+<!-- =========================== BLOG =========================== -->
+<main id="blog" class="page">
+  <section class="blog-hero">
+    <div class="eyebrow" style="justify-content:center; display:flex">The Journal</div>
+    <h1>Writings from<br><em>the counseling room.</em></h1>
+    <p>
+      Reflections on emotional wellness, trauma, communication, and what it looks like to mend.
+      Written by Candi.
+    </p>
+  </section>
+
+  <section class="blog-grid" id="blogGrid">
+    <!-- populated by JS -->
+  </section>
+</main>
+
+<!-- Blog reader -->
+<main id="blog-reader" class="page">
+  <div class="blog-reader">
+    <div class="blog-back" onclick="showPage('blog')">← Back to the Journal</div>
+    <div id="blog-reader-content">
+      <!-- populated by JS -->
+    </div>
+  </div>
+</main>
+
+<!-- =========================== FORMS =========================== -->
+<main id="forms" class="page">
+  <section class="blog-hero">
+    <div class="eyebrow" style="justify-content:center; display:flex">New Client Intake</div>
+    <h1>The first step<br><em>is a gentle one.</em></h1>
+    <p>
+      The intake form helps me understand what you're bringing in before our first session, so
+      we can make the most of our time together. It takes about 10 minutes. Everything you share
+      is confidential.
+    </p>
+  </section>
+
+  <section style="max-width: 900px; margin: 0 auto; padding: 60px 40px 120px">
+    <div class="form-card">
+      <h3>Client Intake Form</h3>
+      <p class="form-sub">Required fields are marked with an asterisk (*). You can also download a printable PDF version below.</p>
+
+      <div id="intake-fields">
+
+        <h4 style="font-family:var(--serif); font-size: 18px; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--rule)">Personal Information</h4>
+        <div class="form-row row2">
+          <div>
+            <label>First Name *</label>
+            <input type="text" required>
+          </div>
+          <div>
+            <label>Last Name *</label>
+            <input type="text" required>
+          </div>
+        </div>
+        <div class="form-row row2">
+          <div>
+            <label>Date of Birth *</label>
+            <input type="date" required>
+          </div>
+          <div>
+            <label>Preferred Pronouns</label>
+            <input type="text" placeholder="e.g. she/her">
+          </div>
+        </div>
+        <div class="form-row row2">
+          <div>
+            <label>Email *</label>
+            <input type="email" required>
+          </div>
+          <div>
+            <label>Phone *</label>
+            <input type="tel" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <label>Mailing Address</label>
+          <input type="text" placeholder="Street, City, State, ZIP">
+        </div>
+        <div class="form-row row2">
+          <div>
+            <label>Preferred Contact Method</label>
+            <select>
+              <option>Email</option>
+              <option>Phone call</option>
+              <option>Text message</option>
+            </select>
+          </div>
+          <div>
+            <label>OK to leave voicemail?</label>
+            <select>
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+          </div>
+        </div>
+
+        <h4 style="font-family:var(--serif); font-size: 18px; margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--rule)">Emergency Contact</h4>
+        <div class="form-row row2">
+          <div>
+            <label>Name *</label>
+            <input type="text" required>
+          </div>
+          <div>
+            <label>Relationship</label>
+            <input type="text">
+          </div>
+        </div>
+        <div class="form-row">
+          <label>Phone *</label>
+          <input type="tel" required>
+        </div>
+
+        <h4 style="font-family:var(--serif); font-size: 18px; margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--rule)">What Brings You In</h4>
+        <div class="form-row">
+          <label>In a few sentences, what brings you to counseling right now? *</label>
+          <textarea required placeholder="There are no right or wrong answers. Share whatever feels honest."></textarea>
+        </div>
+        <div class="form-row">
+          <label>What would you like to be different six months from now?</label>
+          <textarea placeholder="Even a vague answer is helpful."></textarea>
+        </div>
+        <div class="form-row row2">
+          <div>
+            <label>Have you been in therapy before?</label>
+            <select>
+              <option>No</option>
+              <option>Yes, currently</option>
+              <option>Yes, in the past</option>
+            </select>
+          </div>
+          <div>
+            <label>Are you currently taking any psychiatric medication?</label>
+            <select>
+              <option>No</option>
+              <option>Yes</option>
+              <option>Prefer not to say</option>
+            </select>
+          </div>
+        </div>
+
+        <h4 style="font-family:var(--serif); font-size: 18px; margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--rule)">Scheduling Preferences</h4>
+        <div class="form-row row2">
+          <div>
+            <label>Preferred Day</label>
+            <select>
+              <option>No preference</option>
+              <option>Weekday mornings</option>
+              <option>Weekday afternoons</option>
+              <option>Weekday evenings</option>
+            </select>
+          </div>
+          <div>
+            <label>Session Format</label>
+            <select>
+              <option>In-person (Vicksburg)</option>
+              <option>Telehealth (video)</option>
+              <option>Either works</option>
+            </select>
+          </div>
+        </div>
+
+        <label class="form-check">
+          <input type="checkbox" required>
+          <span>I understand that information submitted here is confidential and will be used only to help Candi prepare for our initial session. I consent to being contacted at the email or phone number provided.</span>
+        </label>
+
+        <button class="form-submit" onclick="submitForm(event, 'intake-fields', 'intake-success')">
+          Submit Intake Form
+        </button>
+      </div>
+
+      <div id="intake-success" class="form-success">
+        <div style="color: var(--gold); font-size: 48px; margin-bottom: 16px;">✦</div>
+        <h3>Thank you for reaching out.</h3>
+        <p>Your intake has been received. Candi will personally review it and reach out within one business day to schedule your first appointment.</p>
+      </div>
+
+    </div>
+
+    <div style="margin-top: 40px; text-align: center;">
+      <p style="font-family: var(--serif); font-style: italic; color: var(--ink-soft); font-size: 15px;">
+        Prefer paper? You can download a PDF version, complete it at your own pace, and bring it to
+        your first session.
+      </p>
+      <button class="btn-ghost" onclick="alert('PDF download is set up on the live site — ask Candi for a paper copy for now.')">Download PDF Form</button>
+    </div>
+  </section>
+</main>
+
+<!-- =========================== CONTACT =========================== -->
+<main id="contact" class="page">
+  <section class="contact">
+    <div class="eyebrow">Schedule a Session</div>
+    <div class="contact-grid">
+      <div class="contact-left">
+        <h1>Let's begin <em>the work.</em></h1>
+        <p class="contact-lede">
+          Reaching out is the hardest part. Use the form to request a session or consultation, or
+          contact Candi directly. Most messages are returned within one business day.
+        </p>
+
+        <div class="contact-details">
+          <div class="contact-row">
+            <div class="contact-label">Practice</div>
+            <div class="contact-value">Mend Counseling</div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-label">Address</div>
+            <div class="contact-value">
+              520 Depot Street<br>
+              Vicksburg, MS 39180
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-label">Phone</div>
+            <div class="contact-value">
+              <a href="tel:6013627020">(601) 362-7020</a>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-label">Hours</div>
+            <div class="contact-value">
+              By appointment<br>
+              Mon – Thu
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-label">Consultation</div>
+            <div class="contact-value">
+              Free 15-minute phone call to see if we're a fit.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="form-card">
+          <div id="contact-fields">
+            <h3>Request a Session</h3>
+            <p class="form-sub">Share a bit about what you're looking for — Candi will personally respond.</p>
+
+            <div class="form-row row2">
+              <div>
+                <label>First Name *</label>
+                <input type="text" required>
+              </div>
+              <div>
+                <label>Last Name *</label>
+                <input type="text" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <label>Email *</label>
+              <input type="email" required>
+            </div>
+            <div class="form-row">
+              <label>Phone *</label>
+              <input type="tel" required>
+            </div>
+            <div class="form-row">
+              <label>I'm interested in...</label>
+              <select>
+                <option>A free 15-minute consultation</option>
+                <option>Individual counseling</option>
+                <option>Marital counseling</option>
+                <option>Premarital counseling</option>
+                <option>EMDR / trauma work</option>
+                <option>Something else — I'll share below</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label>Anything else you'd like Candi to know?</label>
+              <textarea placeholder="Optional. A few sentences about what you're hoping for."></textarea>
+            </div>
+            <label class="form-check">
+              <input type="checkbox" required>
+              <span>I consent to being contacted about counseling services at the email or phone number provided.</span>
+            </label>
+            <button class="form-submit" onclick="submitForm(event, 'contact-fields', 'contact-success')">
+              Send Request
+            </button>
+          </div>
+          <div id="contact-success" class="form-success">
+            <div style="color: var(--gold); font-size: 48px; margin-bottom: 16px;">✦</div>
+            <h3>Message received.</h3>
+            <p>Candi will personally respond within one business day. For anything time-sensitive, please call <a href="tel:6013627020">(601) 362-7020</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- =========================== FOOTER =========================== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="brand" style="margin-bottom: 20px">
+        <div class="brand-mark"><img src="assets/logo.png" alt="Mend Counseling"></div>
+        <span class="brand-name">Mend Counseling</span>
+      </div>
+      <p>
+        Christian-integrated, trauma-informed counseling in Vicksburg, Mississippi. Rooted in the
+        belief that broken things can become whole — and more beautiful — through the work of
+        being mended.
+      </p>
+    </div>
+    <div class="footer-col">
+      <h5>Explore</h5>
+      <ul>
+        <li><a onclick="showPage('home')">Home</a></li>
+        <li><a onclick="showPage('about')">About Candi</a></li>
+        <li><a onclick="showPage('services')">Services</a></li>
+        <li><a onclick="showPage('blog')">Journal</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Get Started</h5>
+      <ul>
+        <li><a onclick="showPage('contact')">Schedule</a></li>
+        <li><a onclick="showPage('forms')">Intake Form</a></li>
+        <li><a onclick="showPage('contact')">Free Consultation</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Visit</h5>
+      <ul style="font-family: var(--serif); color: rgba(245,238,223,0.75); font-weight:300">
+        <li>520 Depot Street</li>
+        <li>Vicksburg, MS 39180</li>
+        <li><a href="tel:6013627020">(601) 362-7020</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="kintsugi-divider">
+    <svg viewBox="0 0 100 14" xmlns="http://www.w3.org/2000/svg">
+      <line x1="0" y1="7" x2="38" y2="7" stroke="#D4A13A" stroke-width="1" opacity="0.5"/>
+      <polygon points="42,7 48,3 52,7 48,11" fill="#D4A13A"/>
+      <circle cx="50" cy="7" r="1.5" fill="#E7B857"/>
+      <polygon points="48,7 52,3 58,7 52,11" fill="#D4A13A" opacity="0.7"/>
+      <line x1="62" y1="7" x2="100" y2="7" stroke="#D4A13A" stroke-width="1" opacity="0.5"/>
+    </svg>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Mend Counseling. All rights reserved.</div>
+    <div>Candi Crawford, MS, MA, LPC, NCC · Supervised by Dr. Fred Hall, LPC-S</div>
+  </div>
+</footer>
+
+<script>
+  // ===== Nav behavior =====
+  const nav = document.getElementById('nav');
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 24) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    navToggle.classList.toggle('open');
+  });
+
+  // ===== Page navigation =====
+  function showPage(id){
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    const page = document.getElementById(id);
+    if (page) page.classList.add('active');
+
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.classList.toggle('active', a.dataset.page === id);
+    });
+
+    window.scrollTo({top: 0, behavior: 'instant'});
+    navLinks.classList.remove('open');
+    navToggle.classList.remove('open');
+  }
+
+  // ===== Form submission (demo - replace with real backend) =====
+  function submitForm(e, fieldsId, successId){
+    e.preventDefault();
+    const fields = document.getElementById(fieldsId);
+    const success = document.getElementById(successId);
+    // basic validation
+    const required = fields.querySelectorAll('[required]');
+    let valid = true;
+    required.forEach(el => {
+      if (el.type === 'checkbox' && !el.checked){ valid = false; el.parentElement.style.color = '#8A4A2C'; }
+      else if (!el.value){ valid = false; el.style.borderColor = '#8A4A2C'; }
+      else { el.style.borderColor = ''; }
+    });
+    if (!valid){ return; }
+    fields.style.display = 'none';
+    success.classList.add('show');
+  }
+
+  // ===== Blog data =====
+  const blogs = [
+    {
+      num: "01",
+      tags: ["Emotional Health", "Year-End Reflection"],
+      title: "How Did 2025 Go? Making 2026 Your Year of <em>Emotional Breakthrough.</em>",
+      shortTitle: "How Did 2025 Go? Making 2026 Your Year of Emotional Breakthrough",
+      excerpt: "It's that time of year again. The quiet space between what was and what could be. A moment to pause and ask: How did 2025 go, and what's your plan for 2026?",
+      body: `
+        <p>It's that time of year again. The quiet space between what was and what could be. A moment when I pause and ask myself, and gently invite you to ask yourself: How did 2025 go, and what's your plan for 2026?</p>
+        <p>These aren't just questions. They're invitations to tell the truth.</p>
+        <p>Did you maximize your potential this year? Did you pursue genuine wellness — not just physically, but emotionally and spiritually? Did you cultivate healthier relationships, move toward emotional healing, or finally create the boundaries you've been needing for years?</p>
+        <p>Did you work on clearer, more honest communication? Did you explore your values deeply enough to stand firm in who you are? Did you learn more about yourself and how you "show up" throughout the different seasons of life?</p>
+        <p>If you're sitting here feeling the weight of everything you didn't do, I want you to know something: <strong>You're not alone, and you're not behind.</strong></p>
+
+        <h2>When This Year Taught You Things You <em>Didn't Expect</em></h2>
+        <p>Maybe 2025 taught you things you didn't expect to learn. Perhaps you noticed patterns that had quietly been shaping your decisions for years: how fear disguises itself as busyness, how perfectionism pretends to be excellence, how people-pleasing masquerades as kindness, how control feels safer than trust.</p>
+        <p>Maybe you realized that doing more was actually overcrowding the space you needed to become more. More grounded. More present. More emotionally available. Not perfect. Not limitless. But as whole as you can be in this world, with all of its beauty and its ever-present limitations.</p>
+        <p>You might be carrying disappointment right now. Unanswered prayers. Relationships that haven't healed. Goals that slipped through your fingers. Emotional fatigue that doesn't magically resolve just because the calendar turns.</p>
+        <p>That exhaustion you feel? It's real. And it matters.</p>
+
+        <h2>The Kind of Hope That <em>Actually Changes Things</em></h2>
+        <p>So let's talk about hope for 2026. Not the shallow kind. Not the <em>I hope things get better</em> kind that costs nothing and changes nothing.</p>
+        <p>Let's talk about the kind of hope that moves.</p>
+        <p>Hope can feel risky, can't it? Especially when you've hoped before. When you've tried before. When you've been hurt in the trying. Life is hard. People are tired. And many of us have learned, sometimes the hard way, that wishing isn't the same as changing.</p>
+        <blockquote>Real hope isn't passive. It's partnered with action.</blockquote>
+        <p>Scripture makes this beautifully clear: "Faith by itself, if it does not have works, is dead" (James 2:17, NIV). Hope functions the same way. Hope without action becomes wishful thinking. But hope paired with intentional action becomes a pathway for growth, healing, and transformation.</p>
+        <p>This is where things get uncomfortable. Because growth requires effort. Change requires slowing down long enough to tell the truth. Healing requires learning new ways of responding instead of just reacting. Maturity requires unlearning coping strategies that once protected you but now keep you stuck.</p>
+        <p>Wholeness requires acknowledging that you were never meant to carry everything alone.</p>
+
+        <h2>Why Therapy Isn't <em>What You Think It Is</em></h2>
+        <p>This is where therapy becomes not just helpful, but life-giving.</p>
+        <p>Not because something is "wrong" with you. Not because you've failed. But because something good is trying to grow, and it needs space to breathe.</p>
+        <p>Therapy isn't about fixing broken people. It never has been. Therapy is about creating space — space for reflection, clarity, skill-building, and self-compassion. It's a place where patterns can be explored without shame, where emotions can be named safely, and where new ways of relating can be practiced intentionally.</p>
+        <p>In my work with clients, I've seen what becomes possible when someone finally has that space:</p>
+        <ul>
+          <li>The perfectionist who learns that rest isn't laziness; it's wisdom</li>
+          <li>The people-pleaser who discovers their voice doesn't make them selfish; it makes them honest</li>
+          <li>The anxious parent who realizes their children need their presence more than their perfection</li>
+          <li>The emotionally exhausted spouse who finds language for needs they didn't know they could express</li>
+          <li>The person drowning in shame who finally experiences what it feels like to be truly seen and still worthy</li>
+        </ul>
+
+        <h2>Faith and Therapy: <em>Partners, Not Competitors</em></h2>
+        <p>For those of you who desire to integrate faith into this process — and many of my clients do — I want to be clear: Therapy does not replace trust in the Lord. It can strengthen it.</p>
+        <p>Scripture consistently holds hope and responsibility together. "Let us not love with words or speech but with actions and in truth" (1 John 3:18, NIV). Prayer matters. Surrender matters. And so does the courageous work of growth.</p>
+        <p>Sometimes the action God invites you into is asking for support. Sometimes the most faithful thing you can do is admit you can't heal in isolation. Sometimes wisdom looks like partnering with someone trained to help you untangle the patterns keeping you stuck.</p>
+        <p><strong>Choosing therapy isn't a lack of faith; it's often an expression of wisdom, stewardship, and humility.</strong></p>
+
+        <h2>You Don't Have to <em>Figure This Out Alone</em></h2>
+        <p>Here's what I know after years of walking alongside people in their hardest seasons: The bravest thing you can do is ask for help before you're in crisis.</p>
+        <p>You don't have to wait until everything falls apart. You don't have to earn the right to get support. You don't have to have it all figured out before you walk through the door.</p>
+        <p>You just have to be willing to start. To be honest. To believe that growth is possible and that you're worth the investment.</p>
+        <p>It would truly be an honor to walk alongside you in this season.</p>
+      `
+    },
+    {
+      num: "02",
+      tags: ["Wellness", "New Year"],
+      title: "The #1 Thing to Do for a New Year Defined by <em>Happiness and Wholeness.</em>",
+      shortTitle: "The #1 Thing to Do for a New Year Defined by Happiness and Wholeness",
+      excerpt: "Many of us find ourselves reflective at year's end — filled with hope and a desire for change. This year, I encourage you to make counseling your resolution.",
+      body: `
+        <p>It happens at the end of every year — many of us find ourselves reflective, filled with hope, and brimming with a desire for change. We dream of doing things differently in the coming year, of maximizing our potential, and of becoming the best versions of ourselves. Growth is an innate longing, and with the promise of a fresh 365 days, the allure of New Year's resolutions beckons.</p>
+        <p>While there are countless ways to grow and resolutions to pursue, this year, I encourage you to make counseling your resolution.</p>
+        <p>I often hear people vow to improve their health, finances, or careers. These are valuable goals, but what if you resolved to go deeper? What if this year, you made a commitment to your mental and emotional well-being?</p>
+
+        <h2>Picture Yourself in the <em>Future</em></h2>
+        <p>Imagine the profound impact that investing in your wellness could have on every aspect of your life. Counseling gives you the tools and support to help you navigate challenges and grow into your best self without harboring and nursing anger, guilt, shame, or past wounds.</p>
+        <p>You can finally feel confident and in control of your life. You can feel empowered because you know how to handle difficult situations with resilience and grace. Your relationships can deepen when you learn how to clarify and maximize communication.</p>
+        <p>What else do you want your life to look like? What else do you want to be able to do or to feel? Counseling is the vehicle that drives you to your goal.</p>
+
+        <h2>The Power of <em>Wellness Resolutions</em></h2>
+        <p>Prioritizing mental wellness is a bold and transformative decision. It is a commitment to your inner peace, resilience, and strength. By choosing to focus on your mental health, you open the door to more fulfilling relationships, greater satisfaction in your accomplishments, and a healthier relationship with yourself.</p>
+        <p>Mental and emotional wellness isn't a quick fix; it is a journey. It is a path that leads to rediscovering joy, reclaiming purpose, and cultivating a life that aligns with your true self.</p>
+
+        <h2>Practical Steps for Your <em>Wellness Journey</em></h2>
+        <p>Embarking on a wellness journey doesn't have to feel overwhelming. You can make a significant difference with small, intentional steps. My clients have experienced positive results when they use these tools:</p>
+        <ul>
+          <li><strong>Prioritize Self-Care.</strong> Dedicate time to activities that nourish your spirit and bring you joy — regular exercise, mindfulness practices, or hobbies that reignite your passions.</li>
+          <li><strong>Seek Counseling Support.</strong> There's no better time to connect with a mental health professional. Counseling provides guidance, support, and tools to navigate life's challenges with resilience and confidence.</li>
+          <li><strong>Build Mindful Relationships.</strong> Healthy relationships require intention and care. Make a commitment to nurture connections that uplift and inspire you.</li>
+          <li><strong>Practice Gratitude.</strong> Start a daily journal to note the things you're thankful for, no matter how small.</li>
+        </ul>
+
+        <h2>Reclaiming Joy, Freedom, and <em>Wholeness</em></h2>
+        <p>True freedom comes when we release what no longer serves us. By prioritizing your mental and emotional wellness, you are declaring that your happiness and wholeness matter.</p>
+        <p>This year, let your resolution be more than a fleeting goal; let it be a transformative journey. Commit to the process of becoming — a process where you choose, every day, to invest in your well-being.</p>
+        <p>When you are ready to take this step, know that I would be honored to walk alongside you on your journey.</p>
+      `
+    },
+    {
+      num: "03",
+      tags: ["Trauma", "EMDR"],
+      title: "Unlocking Trauma: How EMDR Therapy <em>Helps You Heal.</em>",
+      shortTitle: "Unlocking Trauma: How EMDR Therapy Helps You Heal",
+      excerpt: "Eye Movement Desensitization and Reprocessing is a powerful, research-backed therapy that helps people process traumatic memories into deep emotional healing.",
+      body: `
+        <p>Everyone experiences trauma differently, and some find knowing what to do to get better to be quite challenging. Eye Movement Desensitization and Reprocessing (EMDR) is a powerful, research-backed therapy that, due to its successful treatment of trauma, has increased in popularity over the past few years.</p>
+        <p>First introduced in the 1980s by Dr. Francine Shapiro, EMDR helps people process traumatic memories in a manner that results in deep emotional healing. Unlike traditional talk therapy, EMDR does not involve extensive discussion or analysis. Instead, the technique utilizes bilateral stimulation — eye movements or other side-to-side sensory input that allow the brain to process and reframe memories. In other words, EMDR "unsticks" the brain from painful memories that cause anxiety, flashbacks, or self-limiting beliefs.</p>
+
+        <h2>What Does It Treat, and <em>Will It Work for Me?</em></h2>
+        <p>While it's widely recognized for its success with Post-Traumatic Stress Disorder (PTSD), EMDR has proven to effectively treat a range of issues, including anxiety, phobias, trauma, and depression. EMDR provides a unique and structured means of healing, regardless if someone has had a single traumatic event or multiple.</p>
+        <p>During a session, I take clients through a progression of phases that begins with preparation and desensitization and ends with the installation of healthier beliefs. Each phase allows the client to reprocess negative thoughts and emotions so that they feel more in control and less affected by past, negative experiences.</p>
+
+        <h2>Is EMDR Safe, and Is It <em>Scientifically Supported?</em></h2>
+        <p>The answer is a resounding yes. Major organizations such as the American Psychological Association and the World Health Organization endorse EMDR as an effective treatment for trauma-related disorders.</p>
+        <p>The beautiful thing about EMDR is that it can work relatively quickly; some clients experience progress within a few sessions. Clients with more complicated trauma may need longer to achieve peace and emotional freedom. EMDR is considered to be a brief intervention, so if you want sustainable change without a lengthy commitment to therapy, this is encouraging news.</p>
+
+        <h2>What It <em>Doesn't Do</em></h2>
+        <p>EMDR doesn't erase memories or make you forget traumatic events. It is not a "quick fix" for complex issues, and it doesn't replace the need for other therapeutic approaches in cases where additional support is needed. EMDR doesn't require extensive talking or detailed verbal recounting of traumatic events. Lastly, EMDR isn't one-size-fits-all; it may not work for everyone, especially without the help of a trained and qualified therapist.</p>
+        <p>EMDR does not confirm or uncover repressed memories. Instead, it aids clients in processing and reducing the emotional impact of distressing memories. It isn't intended to confirm the accuracy of memories, but rather to reduce symptoms.</p>
+        <p>EMDR is not advised for people who may be involved in legal cases, since it can alter the way memories are emotionally processed, which could change the way a person recalls events. This change in emotional perspective can make it challenging to provide testimony, as the reprocessing could shift the intensity or perception of specific memories.</p>
+      `
+    },
+    {
+      num: "04",
+      tags: ["Communication", "Relationships"],
+      title: "Communication Breakdown: <em>I Said This; You Heard That?</em>",
+      shortTitle: "Communication Breakdown: I Said This; You Heard That?",
+      excerpt: "\"You hurt me!\" she exclaimed. \"What did I do?\" her friend asked. A classic communication breakdown — and they are not as mysterious as they feel.",
+      body: `
+        <p>"You hurt me!" Whitley exclaimed. "What did I do?" her friend asked. As Whitley begins her lengthy explanation of their previous conversation and how it hurt her, her friend nods affirmingly. Internally, however, she grows more puzzled, confused, and secretly frustrated. Inwardly, she thinks, "How in the world did Whitley get that from what I said?" Outwardly, she seeks to make amends with an apology, saying, "I'm sorry you were hurt by what I said. I didn't know you would take it that way." It was a classic communication breakdown.</p>
+
+        <h2>Miscommunication Is <em>Not a Stranger</em></h2>
+        <p>Does this story sound familiar? I used this scenario because I've witnessed it play out countless times, but the truth is, there are endless variations I could have written.</p>
+        <p>However, the specifics of the scenario aren't as important as the reality that we all (more than we ever care to) experience similar moments of confusion and puzzlement. Moments of communication breakdown.</p>
+        <p>So, what can we do about it?</p>
+
+        <h2>The Anatomy of <em>Communication</em></h2>
+        <p>Let's talk senders and receivers, encoding and decoding, and noise. At its simplest, communication consists of a sender who has to accurately encode a message so that the receiver can rightly decode the message. Sounds like a cinch, right?</p>
+        <p>How can a concept that sounds so simple and so easy go off the rails so quickly?</p>
+
+        <h2>Noise Fuels <em>Communication Breakdown</em></h2>
+        <p>When we communicate, how often do we account for the noise that muddies communication?</p>
+        <p>What's noise? Noise is anything that affects the sender's process and ability to encode and the receiver's process and ability to decode. More plainly: tired, frustrated, long days, divided attention, feeling under the weather, perception, and lived experience all produce noise in our communication.</p>
+
+        <h2>Types of Noise</h2>
+        <p>Noise can be physical, environmental, social, or even emotional.</p>
+        <ul>
+          <li><strong>Physical noise</strong> can be on display in fatigue. Thoughts like "I'm tired, and I don't have the bandwidth for this" creep into the communication process.</li>
+          <li><strong>Environmental noise</strong> can be, "It's really loud in here, and I cannot focus." How often has your attention drifted off, losing the fight to drown out the television or the music playing in the background?</li>
+          <li><strong>Social noise</strong> could be getting lost in social media or the 24-hour news cycles that impairs our ability to listen to people with ideas and experiences that differ from our own.</li>
+          <li><strong>Emotional noise</strong> can include the pain we experienced during previous communication attempts.</li>
+        </ul>
+        <p>At any rate, noise impacts one's ability to encode with the receiver in mind or decode with the sender in mind.</p>
+
+        <h2>Communication Involves <em>Two Different Individuals</em></h2>
+        <p>One of the most significant factors in communication is understanding that when we communicate, we are not speaking to ourselves. We are communicating with people with different thoughts, different ideas, different backgrounds, different assumptions, different moods, different experiences, and different understandings. Even the words we share in the moment may mean different things to each person.</p>
+        <p>We are different, and it's ok.</p>
+        <p>So, when we send and encode messages, we must consider that these messages are being sent and encoded to people who do not necessarily think or reason the same way we do. They have their own process of receiving and decoding information and their own set of assumptions that spring forth from the words they receive. They have their own background, customs, and culture that shape how they interpret the message that was sent.</p>
+        <blockquote>Truthfully, when we communicate only from the place of, "Let me get my point across," we often do not get our point across. Read that again.</blockquote>
+
+        <h2>Avoid Future <em>Communication Breakdowns</em></h2>
+        <p>Clear, effective, and healthy communication takes honesty and humility, awareness and acceptance, patience and practice. In other words, communication takes work.</p>
+        <p>Hearing and listening to others is just as important as being heard.</p>
+      `
+    },
+    {
+      num: "05",
+      tags: ["Emotions", "Personal Growth", "Trauma"],
+      title: "How Facing Emotion Leads to a Life of <em>Freedom, Connection, and Peace.</em>",
+      shortTitle: "How Facing Emotion Leads to a Life of Freedom, Connection, and Peace",
+      excerpt: "Facing emotion and owning those feelings will allow you to authentically process life for what it has been, what it is, and sometimes, what it might be.",
+      body: `
+        <p>Facing emotion and owning those feelings will allow you to authentically process life for what it has been, what it is, and sometimes, what it might be — good, great, or otherwise. Think about how often you experience difficult circumstances and emotions. Of those times, how often do you bottle or bury those emotions? How uncomfortable are you confronting those feelings? Navigating difficult and unpleasant feelings and experiences is not simply painful and uncomfortable. Ultimately, facing emotion allows something more profound and ingrained to transpire.</p>
+
+        <h2>Where Did These Emotions Come From? <em>Understand How Your Brain Works</em></h2>
+        <p><strong>The Survival Brain.</strong> Your limbic system, sometimes called your survival network, is the part of the brain responsible for your behavior and emotional responses, among other things. Beginning at birth, the limbic system receives messages via your experiences that shape how you respond, feel, process, and behave.</p>
+        <p>When somebody picked on you in elementary school, teased you in junior high school, bullied you in high school, or even broke up with you in early adulthood, your limbic system converted those experiences into information. One way your survival network processed that information was by converting the data into an internal message telling you it is unsafe to respond in a particular way or to express something openly.</p>
+
+        <h2>Everything Starts <em>Somewhere</em></h2>
+        <p>Throughout stages of your life, countless experiences seemingly affirm the information catalogued by your limbic system. Before you know it, you are left frozen, afraid to feel, process, and even own your emotions, which leads to losing authentic connection with others and the ability to be transparent and vulnerable.</p>
+        <p>Your limbic system makes facing emotions difficult, and even though it's trying to protect you from emotional distress, it might be driving you further from the thriving existence you long for.</p>
+
+        <h2>Perceived Safety May Keep You From <em>Authenticity</em></h2>
+        <p>Surface-level interaction may feel safe, but it does not remedy the longing for relationship. In a world where we boast about our couple hundred to a couple thousand social media friends or followers, relationships have been exchanged for likes. All the while, you are still guarded and poised with your emotions. Controlled. Deliberate. Protected. Never fully giving the best of yourself because your previous encounters have taught you and shaped your perception of safe engagement, responses, expressions, and communication — not authentic ones.</p>
+
+        <h2>Reflect Upon What You Learned from <em>Your Past Experiences</em></h2>
+        <p>Consider a time when you expressed raw, vulnerable emotion. Recall when you faced your emotions and shared them with others. Can you remember the responses of those around you? I have heard many clients recount times in which they showed sadness, grief, stress, worry, loneliness, etc. only to be met with a sometimes uncomfortable, "Are you okay?" or worse, teased for not being okay — "I know you are not crying?!"</p>
+        <p>What did these experiences teach you? What message was likely processed in your limbic system?</p>
+        <blockquote>"It is not ok for me to show emotions."</blockquote>
+        <p>If your survival network learned that it wasn't ok for you to show emotions, it makes sense that facing emotions wouldn't feel safe.</p>
+
+        <h2>Mama Was Right: <em>Practice Makes Perfect</em></h2>
+        <p>It takes practice to embrace transparency and vulnerability. It takes practice to get comfortable with being wholly known by others. Before you can begin to practice authentic connection, you first must practice identifying, owning, and growing comfortable with your emotions. The more you practice facing emotion, the more used to emotions you will be; this leads to confidence, freedom, connection, and peace.</p>
+
+        <h2>Don't Go It <em>Alone</em></h2>
+        <p>You don't have to reinvent the wheel. This is where therapy comes in; it is where I come in. You may know through experience that to be vulnerable is to give someone else the power to emotionally wound you. How many times have you tried vulnerability and transparency only for it to come back with a stinging vengeance?</p>
+        <p>However, in my therapy room, there is no bitter, sarcastic quip locked and loaded for launch, no attack on your emotions or experience. I make facing emotions safe for my clients. Your survival brain can rest knowing that a knowledgeable and compassionate therapist, passionate about mental and emotional health, is eager to support you and journey with you as you learn how to thrive.</p>
+        <p>I hope you entrust me with the privilege of joining you on your journey.</p>
+      `
+    }
+  ];
+
+  // Render blog grid
+  const grid = document.getElementById('blogGrid');
+  blogs.forEach((b, i) => {
+    const card = document.createElement('div');
+    card.className = 'blog-card';
+    card.onclick = () => openBlog(i);
+    card.innerHTML = `
+      <div class="blog-card-num">No. ${b.num}</div>
+      <div class="blog-card-tags">${b.tags.map(t=>`<span class="blog-tag">${t}</span>`).join('')}</div>
+      <h3>${b.title}</h3>
+      <p>${b.excerpt}</p>
+      <span class="read">Read the essay</span>
+    `;
+    grid.appendChild(card);
+  });
+
+  function openBlog(i){
+    const b = blogs[i];
+    const el = document.getElementById('blog-reader-content');
+    el.innerHTML = `
+      <div class="blog-reader-meta">
+        <div class="blog-reader-num">Essay No. ${b.num}</div>
+      </div>
+      <h1>${b.title}</h1>
+      <div class="blog-reader-author">
+        Written by Candi Crawford <span class="dot">◆</span> Mend Counseling
+      </div>
+      <div class="blog-reader-content">
+        ${b.body}
+        <div class="blog-post-end">◆ ◆ ◆</div>
+        <div style="text-align:center; margin-top: 40px;">
+          <button class="btn-primary" onclick="showPage('contact')">
+            <span>Talk to Candi</span> <span class="arrow">→</span>
+          </button>
+        </div>
+      </div>
+    `;
+    showPage('blog-reader');
+  }
+</script>
+
+</body>
+</html>
