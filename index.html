@@ -1388,6 +1388,316 @@
   }
   .hero-seams{animation: shimmer 4s ease-in-out infinite}
 
+  /* ======= CONTACT CTA CARD ======= */
+  .contact-cta-card{
+    text-align: center;
+    padding: 56px 48px;
+  }
+  .contact-cta-icon{
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 24px;
+    color: var(--gold-deep);
+  }
+  .contact-cta-icon svg{width: 100%; height: 100%;}
+  .contact-cta-card h3{
+    font-family: var(--display);
+    font-size: 40px;
+    line-height: 1;
+    margin-bottom: 18px;
+  }
+  .contact-cta-card h3 em{
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--gold-deep);
+  }
+  .contact-cta-lede{
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    font-weight: 300;
+    margin-bottom: 32px;
+    max-width: 440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .contact-cta-note{
+    margin-top: 20px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    font-family: var(--serif);
+    line-height: 1.5;
+    font-style: italic;
+  }
+  .contact-cta-note::before{
+    content: "";
+  }
+  @media (max-width: 600px){
+    .contact-cta-card{padding: 40px 28px}
+    .contact-cta-card h3{font-size: 32px}
+  }
+
+  /* ======= SCHEDULE MODAL ======= */
+  .modal-overlay{
+    position: fixed;
+    inset: 0;
+    background: rgba(14, 13, 11, 0.72);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .32s ease, visibility .32s ease;
+    overflow-y: auto;
+  }
+  .modal-overlay.open{
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .modal{
+    position: relative;
+    background: var(--paper);
+    max-width: 620px;
+    width: 100%;
+    max-height: 92vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0;
+    box-shadow:
+      0 40px 80px rgba(14,13,11,0.4),
+      0 0 0 1px rgba(212,161,58,0.15);
+    transform: translateY(24px) scale(0.98);
+    transition: transform .4s cubic-bezier(.16,1,.3,1);
+    border-radius: 2px;
+  }
+  .modal-overlay.open .modal{
+    transform: translateY(0) scale(1);
+  }
+
+  /* Gold-seam top edge of the modal — echoes the kintsugi theme */
+  .modal::before{
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg,
+      var(--gold-deep) 0%,
+      var(--gold-bright) 30%,
+      var(--gold) 50%,
+      var(--gold-bright) 70%,
+      var(--gold-deep) 100%);
+    z-index: 2;
+  }
+
+  .modal-close{
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 36px;
+    height: 36px;
+    background: transparent;
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .25s ease;
+    z-index: 3;
+    color: var(--ink-soft);
+    font-size: 18px;
+    line-height: 1;
+    font-family: var(--serif);
+  }
+  .modal-close:hover{
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--ink);
+    transform: rotate(90deg);
+  }
+
+  .modal-header{
+    padding: 48px 48px 24px;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+  .modal-eyebrow{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    font-weight: 500;
+    margin-bottom: 18px;
+  }
+  .modal-eyebrow::before{
+    content: "";
+    width: 24px; height: 1px;
+    background: var(--gold);
+  }
+  .modal-title{
+    font-family: var(--display);
+    font-size: clamp(32px, 4.5vw, 44px);
+    line-height: 1;
+    letter-spacing: -0.005em;
+    margin: 0 0 16px;
+    color: var(--ink);
+  }
+  .modal-title em{
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--gold-deep);
+  }
+  .modal-lede{
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    font-weight: 300;
+    margin: 0;
+  }
+
+  .modal-body{
+    padding: 32px 48px 40px;
+  }
+
+  /* Container where the SimplePractice widget will be injected */
+  .sp-widget-host{
+    min-height: 340px;
+    position: relative;
+  }
+
+  /* Placeholder state — shown until real SimplePractice widget is wired in.
+     Currently serves as a polished "call us" CTA while the portal is being set up. */
+  .sp-widget-placeholder{
+    background: var(--cream);
+    padding: 40px 32px;
+    text-align: center;
+    font-family: var(--serif);
+    font-weight: 300;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    position: relative;
+  }
+  .sp-widget-placeholder::before{
+    content: "";
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .sp-widget-placeholder .icon{
+    font-family: var(--display);
+    font-size: 32px;
+    color: var(--gold);
+    margin-bottom: 14px;
+    line-height: 1;
+  }
+  .sp-widget-placeholder strong{
+    display: block;
+    font-family: var(--display);
+    font-size: 24px;
+    color: var(--ink);
+    margin-bottom: 14px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+  .sp-widget-placeholder p{
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0 auto 22px;
+    max-width: 380px;
+    color: var(--ink-soft);
+  }
+  .sp-phone-cta{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--ink);
+    color: var(--cream);
+    padding: 16px 30px;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border: 1px solid var(--ink);
+    border-radius: 2px;
+    transition: all .3s ease;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+  }
+  .sp-phone-cta::before{
+    content: "";
+    position: absolute; inset: 0;
+    background: var(--gold);
+    transform: translateY(100%);
+    transition: transform .3s ease;
+  }
+  .sp-phone-cta span{position: relative; z-index: 1}
+  .sp-phone-cta:hover{color: var(--ink)}
+  .sp-phone-cta:hover::before{transform: translateY(0)}
+  .sp-hours-note{
+    font-size: 12px !important;
+    color: var(--ink-soft);
+    margin-top: 18px !important;
+    font-style: italic;
+    letter-spacing: 0.04em;
+  }
+
+  .modal-alt{
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+    font-size: 14px;
+    font-family: var(--serif);
+    color: var(--ink-soft);
+  }
+  .modal-alt a{
+    color: var(--ink);
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 1px;
+  }
+  .modal-alt a:hover{color: var(--gold-deep)}
+
+  .modal-privacy{
+    margin-top: 20px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    opacity: 0.8;
+    line-height: 1.5;
+    text-align: center;
+  }
+  .modal-privacy::before{
+    content: "✦ ";
+    color: var(--gold);
+  }
+
+  body.modal-open{
+    overflow: hidden;
+  }
+
+  @media (max-width: 600px){
+    .modal-overlay{padding: 0}
+    .modal{max-height: 100vh; max-width: 100%}
+    .modal-header{padding: 44px 28px 20px}
+    .modal-body{padding: 24px 28px 32px}
+  }
+
 </style>
 </head>
 <body>
@@ -1406,7 +1716,7 @@
     <a onclick="showPage('forms')" data-page="forms">Intake</a>
     <a onclick="showPage('contact')" data-page="contact">Contact</a>
   </div>
-  <button class="nav-cta" onclick="showPage('contact')"><span>Schedule Session</span></button>
+  <button class="nav-cta" onclick="openScheduleModal()"><span>Schedule Session</span></button>
   <button class="nav-mobile-toggle" id="navToggle" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
@@ -1426,7 +1736,7 @@
         Mississippi on the courageous work of healing.
       </p>
       <div class="hero-cta-row">
-        <button class="btn-primary" onclick="showPage('contact')"><span>Schedule a Session</span> <span class="arrow">→</span></button>
+        <button class="btn-primary" onclick="openScheduleModal()"><span>Schedule a Session</span> <span class="arrow">→</span></button>
         <button class="btn-ghost" onclick="showPage('about')">Meet Candi</button>
       </div>
     </div>
@@ -1696,7 +2006,7 @@
     <p>
       You don't have to have it all figured out before you walk through the door.
     </p>
-    <button class="btn-primary" onclick="showPage('contact')">
+    <button class="btn-primary" onclick="openScheduleModal()">
       <span>Schedule Your First Appointment</span> <span class="arrow">→</span>
     </button>
   </section>
@@ -1729,7 +2039,7 @@
           <div class="about-meta-val">PhD Candidate</div>
         </div>
       </div>
-      <button class="btn-primary" onclick="showPage('contact')">
+      <button class="btn-primary" onclick="openScheduleModal()">
         <span>Work with Candi</span> <span class="arrow">→</span>
       </button>
     </div>
@@ -1838,7 +2148,7 @@
   <section class="cta-banner">
     <h2>Ready to <em>begin?</em></h2>
     <p>Reach out to schedule your appointment.</p>
-    <button class="btn-primary" onclick="showPage('contact')">
+    <button class="btn-primary" onclick="openScheduleModal()">
       <span>Schedule Appointment</span> <span class="arrow">→</span>
     </button>
   </section>
@@ -1959,7 +2269,7 @@
   <section class="cta-banner">
     <h2>Not sure where to <em>start?</em></h2>
     <p>That's okay. Most people aren't. The first step in the journey is scheduling your appointment and the rest will become clearer as you go!</p>
-    <button class="btn-primary" onclick="showPage('contact')">
+    <button class="btn-primary" onclick="openScheduleModal()">
       <span>Schedule Appointment</span> <span class="arrow">→</span>
     </button>
   </section>
@@ -2164,8 +2474,9 @@
       <div class="contact-left">
         <h1>Let's begin <em>the work.</em></h1>
         <p class="contact-lede">
-          Reaching out is the hardest part. Use the form to request a session or
-          contact Candi directly. Most messages are returned within one business day.
+          Reaching out is the hardest part. Request a session through Mend Counseling's
+          secure client portal, or contact Candi directly by phone. Most messages are returned
+          within one business day.
         </p>
 
         <div class="contact-details">
@@ -2183,7 +2494,7 @@
           <div class="contact-row">
             <div class="contact-label">Phone</div>
             <div class="contact-value">
-              <a href="tel:6013627020">(601) 362-7020</a>
+              <a href="tel:6014560408">(601) 456-0408</a>
             </div>
           </div>
           <div class="contact-row">
@@ -2197,56 +2508,24 @@
       </div>
 
       <div>
-        <div class="form-card">
-          <div id="contact-fields">
-            <h3>Request a Session</h3>
-            <p class="form-sub">Share a bit about what you're looking for. Candi will personally respond.</p>
-
-            <div class="form-row row2">
-              <div>
-                <label>First Name *</label>
-                <input type="text" required>
-              </div>
-              <div>
-                <label>Last Name *</label>
-                <input type="text" required>
-              </div>
-            </div>
-            <div class="form-row">
-              <label>Email *</label>
-              <input type="email" required>
-            </div>
-            <div class="form-row">
-              <label>Phone *</label>
-              <input type="tel" required>
-            </div>
-            <div class="form-row">
-              <label>I'm interested in...</label>
-              <select>
-                <option>Individual counseling</option>
-                <option>Marital counseling</option>
-                <option>Premarital counseling</option>
-                <option>EMDR / trauma work</option>
-                <option>Something else - I'll share below</option>
-              </select>
-            </div>
-            <div class="form-row">
-              <label>Anything else you'd like Candi to know?</label>
-              <textarea placeholder="Optional. A few sentences about what you're hoping for."></textarea>
-            </div>
-            <label class="form-check">
-              <input type="checkbox" required>
-              <span>I consent to being contacted about counseling services at the email or phone number provided.</span>
-            </label>
-            <button class="form-submit" onclick="submitForm(event, 'contact-fields', 'contact-success')">
-              Send Request
-            </button>
+        <div class="form-card contact-cta-card">
+          <div class="contact-cta-icon">
+            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.25">
+              <polygon points="24,4 42,14 42,34 24,44 6,34 6,14"/>
+              <path d="M 16 22 L 32 22 M 16 26 L 28 26" stroke-linecap="round"/>
+            </svg>
           </div>
-          <div id="contact-success" class="form-success">
-            <div style="color: var(--gold); font-size: 48px; margin-bottom: 16px;">✦</div>
-            <h3>Message received.</h3>
-            <p>Candi will personally respond within one business day. For anything time-sensitive, please call <a href="tel:6013627020">(601) 362-7020</a>.</p>
-          </div>
+          <h3>Request a <em>Session</em></h3>
+          <p class="contact-cta-lede">
+            Reaching out is the hardest part. The easiest way to connect with Candi is
+            by phone — she'll personally return your call, usually within one business day.
+          </p>
+          <button class="btn-primary" onclick="openScheduleModal()" style="width:100%; justify-content: center;">
+            <span>How to Reach Candi</span> <span class="arrow">→</span>
+          </button>
+          <p class="contact-cta-note">
+            ✦ A secure online request portal is coming soon.
+          </p>
         </div>
       </div>
     </div>
@@ -2279,7 +2558,7 @@
     <div class="footer-col">
       <h5>Get Started</h5>
       <ul>
-        <li><a onclick="showPage('contact')">Schedule</a></li>
+        <li><a onclick="openScheduleModal()">Schedule</a></li>
         <li><a onclick="showPage('forms')">Intake Form</a></li>
       </ul>
     </div>
@@ -2307,6 +2586,57 @@
   </div>
 </footer>
 
+<!-- =========================== SCHEDULE MODAL =========================== -->
+<div class="modal-overlay" id="scheduleModal" role="dialog" aria-modal="true" aria-labelledby="scheduleModalTitle" aria-hidden="true">
+  <div class="modal">
+    <button class="modal-close" onclick="closeScheduleModal()" aria-label="Close">&times;</button>
+
+    <div class="modal-header">
+      <div class="modal-eyebrow">Begin the work</div>
+      <h2 class="modal-title" id="scheduleModalTitle">Request a <em>session.</em></h2>
+      <p class="modal-lede">
+        Reaching out is the hardest part. The easiest way to connect with Candi is by phone —
+        she'll personally return your call, usually within one business day.
+      </p>
+    </div>
+
+    <div class="modal-body">
+      <!--
+        =====================================================================
+        SIMPLEPRACTICE WIDGET GOES HERE
+        =====================================================================
+        Once Candi has the Plus plan configured, replace the contents of
+        <div class="sp-widget-placeholder">...</div> inside .sp-widget-host
+        with the embed snippet she'll copy from:
+          Settings → Scheduling and inquiries → Widgets → Contact form
+        It will look something like:
+          <div id="sp-contact-form"></div>
+          <script src="https://client.simplepractice.com/..."></script>
+      -->
+      <div class="sp-widget-host">
+        <div class="sp-widget-placeholder">
+          <div class="icon">✦</div>
+          <strong>Online scheduling is coming soon.</strong>
+          <p>
+            Mend Counseling is finalizing its secure client portal. In the meantime,
+            the quickest way to reach Candi is by phone.
+          </p>
+          <a href="tel:6014560408" class="sp-phone-cta">
+            <span>Call (601) 456-0408</span>
+          </a>
+          <p class="sp-hours-note">
+            Calls returned within one business day · Mon – Thu
+          </p>
+        </div>
+      </div>
+
+      <div class="modal-privacy">
+        Your information will be transmitted securely and managed inside Mend Counseling's HIPAA-compliant practice system once the portal is live.
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
   // ===== Nav behavior =====
   const nav = document.getElementById('nav');
@@ -2321,6 +2651,41 @@
   navToggle.addEventListener('click', () => {
     navLinks.classList.toggle('open');
     navToggle.classList.toggle('open');
+  });
+
+  // ===== Schedule modal =====
+  const scheduleModal = document.getElementById('scheduleModal');
+
+  function openScheduleModal(){
+    scheduleModal.classList.add('open');
+    scheduleModal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+    // Close mobile nav if it's open
+    navLinks.classList.remove('open');
+    navToggle.classList.remove('open');
+    // Focus management - move focus into the modal
+    setTimeout(() => {
+      const closeBtn = scheduleModal.querySelector('.modal-close');
+      if (closeBtn) closeBtn.focus();
+    }, 100);
+  }
+
+  function closeScheduleModal(){
+    scheduleModal.classList.remove('open');
+    scheduleModal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+  }
+
+  // Close on overlay click
+  scheduleModal.addEventListener('click', (e) => {
+    if (e.target === scheduleModal) closeScheduleModal();
+  });
+
+  // Close on ESC key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && scheduleModal.classList.contains('open')) {
+      closeScheduleModal();
+    }
   });
 
   // ===== Page navigation =====
@@ -2360,56 +2725,44 @@
   const blogs = [
     {
       num: "01",
-      tags: ["Emotional Health", "Year-End Reflection"],
-      title: "How Did 2025 Go? Making 2026 Your Year of <em>Emotional Breakthrough.</em>",
-      shortTitle: "How Did 2025 Go? Making 2026 Your Year of Emotional Breakthrough",
-      excerpt: "It's that time of year again. The quiet space between what was and what could be. A moment to pause and ask: How did 2025 go, and what's your plan for 2026?",
+      tags: ["Emotional Health", "Year-End Reflection", "Faith"],
+      title: "How Did 2025 Go? <em>And What's Your Plan for 2026?</em>",
+      shortTitle: "How Did 2025 Go? And What's Your Plan for 2026?",
+      excerpt: "It's that time of year again, when I pause and ask myself, and gently invite you to ask yourself, how did 2025 go, and what's your plan for 2026?",
       body: `
-        <p>It's that time of year again. The quiet space between what was and what could be. A moment when I pause and ask myself, and gently invite you to ask yourself: How did 2025 go, and what's your plan for 2026?</p>
-        <p>These aren't just questions. They're invitations to tell the truth.</p>
-        <p>Did you maximize your potential this year? Did you pursue genuine wellness, not just physically, but emotionally and spiritually? Did you cultivate healthier relationships, move toward emotional healing, or finally create the boundaries you've been needing for years?</p>
-        <p>Did you work on clearer, more honest communication? Did you explore your values deeply enough to stand firm in who you are? Did you learn more about yourself and how you "show up" throughout the different seasons of life?</p>
-        <p>If you're sitting here feeling the weight of everything you didn't do, I want you to know something: <strong>You're not alone, and you're not behind.</strong></p>
+        <p>It's that time of year again, when I pause and ask myself, and gently invite you to ask yourself, <em>How did 2025 go, and what's your plan for 2026?</em></p>
+        <p>Did you maximize your potential?<br>
+        Did you pursue wellness — physically, emotionally, spiritually?<br>
+        Did you cultivate healthier relationships?<br>
+        Did you move toward emotional healing?</p>
+        <p>Did you work on clearer, more honest communication? Did you explore your values deeply enough to create solid boundaries? Did you learn more about yourself and how you "show up" throughout the different seasons of life?</p>
+        <p>Maybe this year taught you things you didn't expect to learn. Perhaps you noticed patterns that had quietly been shaping your decisions — how fear can disguise itself as busyness, perfectionism, people-pleasing, or control. Maybe you realized that <em>doing more</em> was actually overcrowding the space needed for you to become more — more grounded, more present, more emotionally available. Not perfect. Not limitless. But as whole as you can be in this world as you know it, with all of its beauty and its ever-present limitations.</p>
+        <p>So — how did 2025 go? And what hopes are you holding for 2026?</p>
 
-        <h2>When This Year Taught You Things You <em>Didn't Expect</em></h2>
-        <p>Maybe 2025 taught you things you didn't expect to learn. Perhaps you noticed patterns that had quietly been shaping your decisions for years: how fear disguises itself as busyness, how perfectionism pretends to be excellence, how people-pleasing masquerades as kindness, how control feels safer than trust.</p>
-        <p>Maybe you realized that doing more was actually overcrowding the space you needed to become more. More grounded. More present. More emotionally available. Not perfect. Not limitless. But as whole as you can be in this world, with all of its beauty and its ever-present limitations.</p>
-        <p>You might be carrying disappointment right now. Unanswered prayers. Relationships that haven't healed. Goals that slipped through your fingers. Emotional fatigue that doesn't magically resolve just because the calendar turns.</p>
-        <p>That exhaustion you feel? It's real. And it matters.</p>
+        <h2>Hope can be a <em>tender thing.</em></h2>
+        <p>Not the kind of hope that simply wishes — <em>I hope things get better.</em> Most of us are quite skilled at wishing. The harder part of hope is confidence: the belief that change is possible <em>and</em> that we have a role to play in it. This part of hope asks something of us. It requires courage, vulnerability, and trust.</p>
+        <p>And if we're honest, it makes sense that hope can feel risky. Life <em>is</em> hard. People <em>are</em> tired. Many of us are carrying disappointment, grief, unanswered prayers, and emotional fatigue that doesn't magically resolve when the calendar turns. We've hoped before. We've tried before. Sometimes we've been hurt in the trying.</p>
+        <p>Still, I believe hope is worth having.</p>
+        <p>But not the kind of hope that floats passively above our lives. I believe in <strong>hope that moves.</strong></p>
+        <p>Scripture makes it clear that faith was never meant to be static. <em>"Faith by itself, if it does not have works, is dead"</em> (James 2:17, NIV). Hope functions the same way. Hope without action becomes wishful thinking. But hope paired with intentional action becomes a pathway for growth, healing, and change.</p>
 
-        <h2>The Kind of Hope That <em>Actually Changes Things</em></h2>
-        <p>So let's talk about hope for 2026. Not the shallow kind. Not the <em>I hope things get better</em> kind that costs nothing and changes nothing.</p>
-        <p>Let's talk about the kind of hope that moves.</p>
-        <p>Hope can feel risky, can't it? Especially when you've hoped before. When you've tried before. When you've been hurt in the trying. Life is hard. People are tired. And many of us have learned, sometimes the hard way, that wishing isn't the same as changing.</p>
-        <blockquote>Real hope isn't passive. It's partnered with action.</blockquote>
-        <p>Scripture makes this beautifully clear: "Faith by itself, if it does not have works, is dead" (James 2:17, NIV). Hope functions the same way. Hope without action becomes wishful thinking. But hope paired with intentional action becomes a pathway for growth, healing, and transformation.</p>
-        <p>This is where things get uncomfortable. Because growth requires effort. Change requires slowing down long enough to tell the truth. Healing requires learning new ways of responding instead of just reacting. Maturity requires unlearning coping strategies that once protected you but now keep you stuck.</p>
-        <p>Wholeness requires acknowledging that you were never meant to carry everything alone.</p>
+        <h2>Growth <em>requires effort.</em></h2>
+        <p>And this is where things can feel uncomfortable — because growth requires effort.</p>
+        <p>Change requires slowing down long enough to tell the truth.<br>
+        Healing requires learning new ways of responding instead of reacting.<br>
+        Maturity requires unlearning coping strategies that once protected us but now keep us stuck.<br>
+        Wholeness requires acknowledging that we were never meant to carry everything alone.</p>
+        <p>This is where therapy can become a meaningful and life-giving resource.</p>
+        <p>Not because something is "wrong" with you.<br>
+        Not because you've failed.<br>
+        But because something <em>good</em> is trying to grow.</p>
+        <p>Therapy is not about fixing broken people. It's about creating space — space for reflection, clarity, skill-building, and compassion. It's a place where patterns can be explored without shame, emotions can be named safely, and new ways of relating can be practiced intentionally. Therapy invites you to become more aware of yourself, more aligned with your values, and more equipped to engage your relationships with wisdom and care.</p>
 
-        <h2>Why Therapy Isn't <em>What You Think It Is</em></h2>
-        <p>This is where therapy becomes not just helpful, but life-giving.</p>
-        <p>Not because something is "wrong" with you. Not because you've failed. But because something good is trying to grow, and it needs space to breathe.</p>
-        <p>Therapy isn't about fixing broken people. It never has been. Therapy is about creating space, space for reflection, clarity, skill-building, and self-compassion. It's a place where patterns can be explored without shame, where emotions can be named safely, and where new ways of relating can be practiced intentionally.</p>
-        <p>In my work with clients, I've seen what becomes possible when someone finally has that space:</p>
-        <ul>
-          <li>The perfectionist who learns that rest isn't laziness; it's wisdom</li>
-          <li>The people-pleaser who discovers their voice doesn't make them selfish; it makes them honest</li>
-          <li>The anxious parent who realizes their children need their presence more than their perfection</li>
-          <li>The emotionally exhausted spouse who finds language for needs they didn't know they could express</li>
-          <li>The person drowning in shame who finally experiences what it feels like to be truly seen and still worthy</li>
-        </ul>
-
-        <h2>Faith and Therapy: <em>Partners, Not Competitors</em></h2>
-        <p>For those of you who desire to integrate faith into this process, and many of my clients do, I want to be clear: Therapy does not replace trust in the Lord. It can strengthen it.</p>
-        <p>Scripture consistently holds hope and responsibility together. "Let us not love with words or speech but with actions and in truth" (1 John 3:18, NIV). Prayer matters. Surrender matters. And so does the courageous work of growth.</p>
-        <p>Sometimes the action God invites you into is asking for support. Sometimes the most faithful thing you can do is admit you can't heal in isolation. Sometimes wisdom looks like partnering with someone trained to help you untangle the patterns keeping you stuck.</p>
-        <p><strong>Choosing therapy isn't a lack of faith; it's often an expression of wisdom, stewardship, and humility.</strong></p>
-
-        <h2>You Don't Have to <em>Figure This Out Alone</em></h2>
-        <p>Here's what I know after years of walking alongside people in their hardest seasons: The bravest thing you can do is ask for help before you're in crisis.</p>
-        <p>You don't have to wait until everything falls apart. You don't have to earn the right to get support. You don't have to have it all figured out before you walk through the door.</p>
-        <p>You just have to be willing to start. To be honest. To believe that growth is possible and that you're worth the investment.</p>
-        <p>It would truly be an honor to walk alongside you in this season.</p>
+        <h2>Faith and therapy, <em>together.</em></h2>
+        <p>For those who desire to integrate faith into this process, therapy does not replace trust in the Lord; it can strengthen it. Scripture consistently holds hope and responsibility together. <em>"Let us not love with words or speech but with actions and in truth"</em> (1 John 3:18, NIV). Prayer matters. Surrender matters. And so does the courageous work of growth.</p>
+        <blockquote>Sometimes the action God invites us into is asking for support.</blockquote>
+        <p>If 2026 is calling you toward deeper self-awareness, healthier boundaries, clearer communication, stronger relationships, or emotional healing, you do not have to answer that call on your own. Choosing therapy is not a lack of faith — it is often an expression of wisdom, stewardship, and humility.</p>
+        <p>It would truly be an honor to walk alongside you in this season. To listen carefully. To help you slow down, grow stronger, and move forward with intention and hope. If you're ready to take that next step, however small, call <strong>(601) 456-0408</strong> and ask to schedule an appointment with me, Candi.</p>
       `
     },
     {
@@ -2501,36 +2854,25 @@
     {
       num: "05",
       tags: ["Emotions", "Personal Growth", "Trauma"],
-      title: "How Facing Emotion Leads to a Life of <em>Freedom, Connection, and Peace.</em>",
-      shortTitle: "How Facing Emotion Leads to a Life of Freedom, Connection, and Peace",
-      excerpt: "Facing emotion and owning those feelings will allow you to authentically process life for what it has been, what it is, and sometimes, what it might be.",
+      title: "Thriving Through <em>Facing Emotions.</em>",
+      shortTitle: "Thriving Through Facing Emotions",
+      excerpt: "Facing and owning feelings helps us to authentically process life for what it has been, what it is, and sometimes, what it might be — good, great, or otherwise.",
       body: `
-        <p>Facing emotion and owning those feelings will allow you to authentically process life for what it has been, what it is, and sometimes, what it might be — good, great, or otherwise. Think about how often you experience difficult circumstances and emotions. Of those times, how often do you bottle or bury those emotions? How uncomfortable are you confronting those feelings? Navigating difficult and unpleasant feelings and experiences is not simply painful and uncomfortable. Ultimately, facing emotion allows something more profound and ingrained to transpire.</p>
+        <p>Facing and owning feelings helps us to authentically process life for what it has been, what it is, and sometimes, what it might be — good, great, or otherwise. Think about how often you experience difficult circumstances and emotions. Of those times, how often do you bottle or bury those emotions? How uncomfortable are you confronting those feelings? However, navigating difficult and unpleasant feelings and experiences is not simply painful and uncomfortable. Ultimately, something more profound and ingrained is transpiring.</p>
 
-        <h2>Where Did These Emotions Come From? <em>Understand How Your Brain Works</em></h2>
-        <p><strong>The Survival Brain.</strong> Your limbic system, sometimes called your survival network, is the part of the brain responsible for your behavior and emotional responses, among other things. Beginning at birth, the limbic system receives messages via your experiences that shape how you respond, feel, process, and behave.</p>
-        <p>When somebody picked on you in elementary school, teased you in junior high school, bullied you in high school, or even broke up with you in early adulthood, your limbic system converted those experiences into information. One way your survival network processed that information was by converting the data into an internal message telling you it is unsafe to respond in a particular way or to express something openly.</p>
+        <h2>The <em>survival network.</em></h2>
+        <p>Your limbic system, sometimes called your survival network, is the part of the brain responsible for your behavior and emotional responses, among other things. The limbic system receives messages from experiences starting at birth onward that shape how you respond, feel, process, and behave. When somebody picked on you in elementary school, teased you in junior high school, bullied you in high school, or even broke up with you in early adulthood, your limbic system, "survival network," converted those experiences into information. That information was processed (converted) in many ways including internal messages telling us it is unsafe to respond "this" way or express "that" openly. Throughout stages of our life, countless experiences seemingly affirm such information. Before you know it, you are left frozen, afraid to feel, process, and even own your emotions, losing authentic connection with others and the ability to be transparent and vulnerable.</p>
 
-        <h2>Everything Starts <em>Somewhere</em></h2>
-        <p>Throughout stages of your life, countless experiences seemingly affirm the information catalogued by your limbic system. Before you know it, you are left frozen, afraid to feel, process, and even own your emotions, which leads to losing authentic connection with others and the ability to be transparent and vulnerable.</p>
-        <p>Your limbic system makes facing emotions difficult, and even though it's trying to protect you from emotional distress, it might be driving you further from the thriving existence you long for.</p>
+        <p>Think about it; consider not simply your age but also your lived experience. Experiences are not bound by nor mutually exclusive to age. Life does not withhold painful, uncomfortable, and even heartbreaking experiences from you based on your age. You can find yourself stuck in a cycle, fearing transparent communication, genuine connection, and being vulnerably known. Surface-level interaction does not remedy the longing for relationship. In a world where we boast about our couple hundred to a couple thousand "friends" or "followers," relationships have been exchanged for "likes." All the while, you are still guarded and poised with your emotions. Controlled. Deliberate. Protected. Never fully giving the best of yourself because your previous encounters have taught you and shaped "safe" engagement, responses, expressions, and communication, not authentic ones.</p>
 
-        <h2>Perceived Safety May Keep You From <em>Authenticity</em></h2>
-        <p>Surface-level interaction may feel safe, but it does not remedy the longing for relationship. In a world where we boast about our couple hundred to a couple thousand social media friends or followers, relationships have been exchanged for likes. All the while, you are still guarded and poised with your emotions. Controlled. Deliberate. Protected. Never fully giving the best of yourself because your previous encounters have taught you and shaped your perception of safe engagement, responses, expressions, and communication — not authentic ones.</p>
-
-        <h2>Reflect Upon What You Learned from <em>Your Past Experiences</em></h2>
-        <p>Consider a time when you expressed raw, vulnerable emotion. Recall when you faced your emotions and shared them with others. Can you remember the responses of those around you? I have heard many clients recount times in which they showed sadness, grief, stress, worry, loneliness, etc. only to be met with a sometimes uncomfortable, "Are you okay?" or worse, teased for not being okay. "I know you are not crying?!"</p>
-        <p>What did these experiences teach you? What message was likely processed in your limbic system?</p>
+        <h2>What did those responses <em>teach you?</em></h2>
+        <p>Consider a time when you expressed raw, vulnerable emotion. Can you remember the response of those around you? Many have recounted showing sadness, grief, stress, worry, loneliness, etcetera to be met with a sometimes uncomfortable, "Are you okay?" or worse, teasing you for not being okay, exclaiming in disbelief, "I know you are not crying?!" What did these experiences teach you? What message was likely processed in the limbic system?</p>
         <blockquote>"It is not ok for me to show emotions."</blockquote>
-        <p>If your survival network learned that it wasn't ok for you to show emotions, it makes sense that facing emotions wouldn't feel safe.</p>
+        <p>It takes practice to embrace transparency and vulnerability. It takes practice getting comfortable with being known by others wholly. Before you can begin to practice authentic connection, you first must practice identifying, owning, and growing comfortable with your emotions.</p>
 
-        <h2>Mama Was Right: <em>Practice Makes Perfect</em></h2>
-        <p>It takes practice to embrace transparency and vulnerability. It takes practice to get comfortable with being wholly known by others. Before you can begin to practice authentic connection, you first must practice identifying, owning, and growing comfortable with your emotions. The more you practice facing emotion, the more used to emotions you will be; this leads to confidence, freedom, connection, and peace.</p>
-
-        <h2>Don't Go It <em>Alone</em></h2>
-        <p>You don't have to reinvent the wheel. This is where therapy comes in; it is where I come in. You may know through experience that to be vulnerable is to give someone else the power to emotionally wound you. How many times have you tried vulnerability and transparency only for it to come back with a stinging vengeance?</p>
-        <p>However, in my therapy room, there is no bitter, sarcastic quip locked and loaded for launch, no attack on your emotions or experience. I make facing emotions safe for my clients. Your survival brain can rest knowing that a knowledgeable and compassionate therapist, passionate about mental and emotional health, is eager to support you and journey with you as you learn how to thrive.</p>
-        <p>I hope you entrust me with the privilege of joining you on your journey.</p>
+        <h2>That's where <em>I come in.</em></h2>
+        <p>That is where therapy comes in; it is where I come in. To be vulnerable is to give someone else the power to wound you emotionally. How many times have you tried vulnerability and transparency only for it to come back with a stinging vengeance? However, here, there is no bitter, sarcastic quip locked and loaded for launch, no attack on your emotions or experience. A knowledgeable and compassionate therapist, passionate about mental and emotional health, is eager to support you and journey with you as you learn how to thrive. I hope you entrust me with the privilege of joining you on your journey.</p>
+        <p style="text-align: right; font-family: var(--serif); font-style: italic; color: var(--gold-deep); margin-top: 32px;">— Candi Crawford</p>
       `
     }
   ];
@@ -2566,7 +2908,7 @@
         ${b.body}
         <div class="blog-post-end">◆ ◆ ◆</div>
         <div style="text-align:center; margin-top: 40px;">
-          <button class="btn-primary" onclick="showPage('contact')">
+          <button class="btn-primary" onclick="openScheduleModal()">
             <span>Talk to Candi</span> <span class="arrow">→</span>
           </button>
         </div>
