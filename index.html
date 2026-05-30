@@ -1852,6 +1852,42 @@
   }
 
 </style>
+<!-- SimplePractice widget script — loaded once, powers both contact form and OAR -->
+<script src="https://widget-cdn.simplepractice.com/assets/integration-1.0.js"></script>
+<!-- Override SimplePractice's default blue button with Kintsugi brand styling -->
+<style>
+  .spwidget-button-wrapper { text-align: left !important; }
+  .spwidget-button {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 14px 32px !important;
+    background: var(--ink) !important;
+    color: var(--cream) !important;
+    border: 1px solid var(--ink) !important;
+    border-radius: 0 !important;
+    font-family: var(--sans) !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: background 0.2s, color 0.2s !important;
+  }
+  .spwidget-button:hover {
+    background: var(--gold-deep) !important;
+    color: var(--cream) !important;
+    border-color: var(--gold-deep) !important;
+  }
+  .spwidget-button:active {
+    background: var(--gold) !important;
+    box-shadow: none !important;
+    color: var(--ink) !important;
+  }
+  /* Center the button inside the modal */
+  .sp-widget-host .spwidget-button-wrapper { text-align: center !important; }
+</style>
 </head>
 <body>
 
@@ -2571,152 +2607,88 @@
     </p>
   </section>
 
-  <section style="max-width: 900px; margin: 0 auto; padding: 60px 40px 120px">
-    <div class="form-card">
-      <h3>Client Intake Form</h3>
-      <p class="form-sub">Required fields are marked with an asterisk (*). You can also download a printable PDF version below.</p>
+  <section style="max-width: 700px; margin: 0 auto; padding: 60px 40px 120px;">
 
-      <div id="intake-fields">
+    <!-- SP Appointment Request widget -->
+    <div style="
+      background: var(--cream-warm, #F0E8D6);
+      border: 1px solid rgba(212,161,58,0.25);
+      border-radius: 4px;
+      padding: 48px 40px;
+      text-align: center;
+      margin-bottom: 40px;
+    ">
+      <div style="
+        font-family: var(--sans);
+        font-size: 10px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--gold-deep);
+        margin-bottom: 12px;
+      ">Secure Client Portal</div>
 
-        <h4 style="font-family:var(--serif); font-size: 18px; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--rule)">Personal Information</h4>
-        <div class="form-row row2">
-          <div>
-            <label>First Name *</label>
-            <input type="text" required>
-          </div>
-          <div>
-            <label>Last Name *</label>
-            <input type="text" required>
-          </div>
-        </div>
-        <div class="form-row row2">
-          <div>
-            <label>Date of Birth *</label>
-            <input type="date" required>
-          </div>
-        </div>
-        <div class="form-row row2">
-          <div>
-            <label>Email *</label>
-            <input type="email" required>
-          </div>
-          <div>
-            <label>Phone *</label>
-            <input type="tel" required>
-          </div>
-        </div>
-        <div class="form-row">
-          <label>Mailing Address</label>
-          <input type="text" placeholder="Street, City, State, ZIP">
-        </div>
-        <div class="form-row row2">
-          <div>
-            <label>Preferred Contact Method</label>
-            <select>
-              <option>Email</option>
-              <option>Phone call</option>
-              <option>Text message</option>
-            </select>
-          </div>
-          <div>
-            <label>OK to leave voicemail?</label>
-            <select>
-              <option>Yes</option>
-              <option>No</option>
-            </select>
-          </div>
-        </div>
+      <h3 style="
+        font-family: var(--display);
+        font-size: 32px;
+        color: var(--ink);
+        margin-bottom: 12px;
+        line-height: 1.1;
+      ">Request an <em style="font-family:var(--serif); font-style:italic; color:var(--gold-deep);">Appointment</em></h3>
 
-        <h4 style="font-family:var(--serif); font-size: 18px; margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--rule)">Emergency Contact</h4>
-        <div class="form-row row2">
-          <div>
-            <label>Name *</label>
-            <input type="text" required>
-          </div>
-          <div>
-            <label>Relationship</label>
-            <input type="text">
-          </div>
-        </div>
-        <div class="form-row">
-          <label>Phone *</label>
-          <input type="tel" required>
-        </div>
-
-        <h4 style="font-family:var(--serif); font-size: 18px; margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--rule)">What Brings You In</h4>
-        <div class="form-row">
-          <label>In a few sentences, what brings you to counseling right now? *</label>
-          <textarea required placeholder="There are no right or wrong answers. Share whatever feels honest."></textarea>
-        </div>
-        <div class="form-row">
-          <label>What would you like to be different six months from now?</label>
-          <textarea placeholder="Even a vague answer is helpful."></textarea>
-        </div>
-        <div class="form-row row2">
-          <div>
-            <label>Have you been in therapy before?</label>
-            <select>
-              <option>No</option>
-              <option>Yes, currently</option>
-              <option>Yes, in the past</option>
-            </select>
-          </div>
-          <div>
-            <label>Are you currently taking any psychiatric medication?</label>
-            <select>
-              <option>No</option>
-              <option>Yes</option>
-              <option>Prefer not to say</option>
-            </select>
-          </div>
-        </div>
-
-        <h4 style="font-family:var(--serif); font-size: 18px; margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--rule)">Scheduling Preferences</h4>
-        <div class="form-row row2">
-          <div>
-            <label>Preferred Day</label>
-            <select>
-              <option>No preference</option>
-              <option>Weekday mornings</option>
-              <option>Weekday afternoons</option>
-              <option>Weekday evenings</option>
-            </select>
-          </div>
-          <div>
-            <label>Session Format</label>
-            <select>
-              <option>In-person (Vicksburg)</option>
-              <option>Telehealth (video)</option>
-              <option>Either works</option>
-            </select>
-          </div>
-        </div>
-
-        <label class="form-check">
-          <input type="checkbox" required>
-          <span>I understand that information submitted here is confidential and will be used only to help Candi prepare for our initial session. I consent to being contacted at the email or phone number provided.</span>
-        </label>
-
-        <button class="form-submit" onclick="submitForm(event, 'intake-fields', 'intake-success')">
-          Submit Intake Form
-        </button>
-      </div>
-
-      <div id="intake-success" class="form-success">
-        <div style="color: var(--gold); font-size: 48px; margin-bottom: 16px;">✦</div>
-        <h3>Thank you for reaching out.</h3>
-        <p>Your intake has been received. Candi will personally review it and reach out within one business day to schedule your first appointment.</p>
-      </div>
-
-    </div>
-
-    <div style="margin-top: 40px; text-align: center;">
-      <p style="font-family: var(--serif); font-style: italic; color: var(--ink-soft); font-size: 15px;">
-        Prefer paper? You can download a PDF version, complete it at your own pace, and bring it to
-        your first session.
+      <p style="
+        font-family: var(--serif);
+        font-size: 17px;
+        color: var(--ink-soft);
+        margin-bottom: 32px;
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+      ">
+        Submit your appointment request through Mend Counseling's secure SimplePractice portal.
+        Candi will personally review it and follow up within one business day.
       </p>
-      <button class="btn-ghost" onclick="alert('PDF download is set up on the live site — ask Candi for a paper copy for now.')">Download PDF Form</button>
+
+      <div class="spwidget-button-wrapper" style="text-align:center; margin-bottom: 20px;">
+        <a href="https://candi-crawford.clientsecure.me"
+           class="spwidget-button"
+           data-spwidget-scope-id="be80ed66-9953-4992-92ec-6ce0c5cf314b"
+           data-spwidget-scope-uri="candi-crawford"
+           data-spwidget-application-id="7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b"
+           data-spwidget-type="OAR"
+           data-spwidget-scope-global
+           data-spwidget-autobind>
+          Request Appointment →
+        </a>
+      </div>
+
+      <p style="
+        font-family: var(--sans);
+        font-size: 11px;
+        color: var(--ink-soft);
+        opacity: 0.7;
+        margin: 0;
+      ">
+        🔒 HIPAA-compliant · Responses within one business day · Mon – Thu
+      </p>
     </div>
+
+    <!-- Fallback contact option -->
+    <div style="text-align: center; padding-top: 8px;">
+      <p style="font-family: var(--serif); font-style: italic; color: var(--ink-soft); font-size: 15px; margin-bottom: 16px;">
+        Prefer to reach out directly?
+      </p>
+      <a href="mailto:candi@counselwithmend.com" style="
+        font-family: var(--sans);
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--gold-deep);
+        text-decoration: none;
+        border-bottom: 1px solid rgba(158,116,25,0.4);
+        padding-bottom: 2px;
+      ">Email candi@counselwithmend.com</a>
+    </div>
+
   </section>
 </main>
 
@@ -2879,37 +2851,25 @@
     </div>
 
     <div class="modal-body">
-      <!--
-        =====================================================================
-        SIMPLEPRACTICE WIDGET GOES HERE
-        =====================================================================
-        Once Candi has the Plus plan configured, replace the contents of
-        <div class="sp-widget-placeholder">...</div> inside .sp-widget-host
-        with the embed snippet she'll copy from:
-          Settings → Scheduling and inquiries → Widgets → Contact form
-        It will look something like:
-          <div id="sp-contact-form"></div>
-          <script src="https://client.simplepractice.com/..."></script>
-      -->
       <div class="sp-widget-host">
-        <div class="sp-widget-placeholder">
-          <div class="icon">✦</div>
-          <strong>Online scheduling is coming soon.</strong>
-          <p>
-            Mend Counseling is finalizing its secure client portal. In the meantime,
-            the quickest way to reach Candi is by email.
-          </p>
-          <a href="mailto:candi@counselwithmend.com" class="sp-phone-cta">
-            <span>Email candi@counselwithmend.com</span>
+        <div class="spwidget-button-wrapper">
+          <a href="https://candi-crawford.clientsecure.me"
+             class="spwidget-button"
+             data-spwidget-scope-id="be80ed66-9953-4992-92ec-6ce0c5cf314b"
+             data-spwidget-scope-uri="candi-crawford"
+             data-spwidget-application-id="7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b"
+             data-spwidget-channel="embedded_widget"
+             data-spwidget-type="Contact form"
+             data-spwidget-contact
+             data-spwidget-scope-global
+             data-spwidget-autobind>
+            Contact Candi →
           </a>
-          <p class="sp-hours-note">
-            Responses within one business day · Mon – Thu
-          </p>
         </div>
       </div>
 
       <div class="modal-privacy">
-        Your information will be transmitted securely and managed inside Mend Counseling's HIPAA-compliant practice system once the portal is live.
+        Your information is transmitted securely inside Mend Counseling's HIPAA-compliant SimplePractice portal.
       </div>
 
       <div class="modal-alt">
